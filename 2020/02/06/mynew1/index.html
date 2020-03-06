@@ -5,16 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>mynew1 - 阳光下塞黑的🐖</title>
+    <title>模拟网络嗅探器 - singularity</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="import socketimport osimport structfrom ctypes import *
-host = ‘192.168.249.1’
-class IP(Structure):,"> 
-    <meta name="author" content="Mr.mei"> 
-    <link rel="alternative" href="atom.xml" title="阳光下塞黑的🐖" type="application/atom+xml"> 
+    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354,"> 
+    <meta name="author" content="阳光下的猪"> 
+    <link rel="alternative" href="atom.xml" title="singularity" type="application/atom+xml"> 
     <link rel="icon" href="/dp.github.io/img/favicon.png"> 
     <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
     
@@ -50,7 +48,7 @@ class IP(Structure):,">
             <div></div>
         </div>
     </div>
-    <span id="config-title" style="display:none">阳光下塞黑的🐖</span>
+    <span id="config-title" style="display:none">singularity</span>
     <div id="loader"></div>
     <div id="single">
     <div class="scrollbar gradient-bg-rev"></div>
@@ -59,7 +57,7 @@ class IP(Structure):,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://origins-m.github.io/dp.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">mynew1</h3>
+        <h3 class="subtitle">模拟网络嗅探器</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -89,25 +87,25 @@ class IP(Structure):,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/网络"><b>「
-                    </b>网络<b> 」</b></a>
+                <a href="/categories/网络编程"><b>「
+                    </b>网络编程<b> 」</b></a>
                 
                 February 06, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/dp.github.io/2020/02/06/mynew1/" title="mynew1" class="">mynew1</a>
+            <h3 class="post-title animated fadeInDown"><a href="/dp.github.io/2020/02/06/mynew1/" title="模拟网络嗅探器" class="">模拟网络嗅探器</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    1.8k
+                    6.8k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    6 mins.
                 </span>
                 
                 
@@ -141,26 +139,7 @@ class IP(Structure):,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>import socket<br>import os<br>import struct<br>from ctypes import *</p>
-<p>host = ‘192.168.249.1’</p>
-<p>class IP(Structure):<br>    <em>fields</em> = [<br>        (“ihl”, c_ubyte, 4),<br>        (“version”, c_ubyte, 4),<br>        (“tos”, c_ubyte),<br>        (“len”, c_ushort),<br>        (“id”, c_ushort),<br>        (“offset”, c_ushort),<br>        (“ttl”, c_ubyte),<br>        (“protocol_num”, c_ubyte),<br>        (“sum”, c_ushort),<br>        (“src”, c_ulong),<br>        (“dst”, c_ulong)<br>        ]<br>    def <strong>new</strong>(self, socket_buffer=None):<br>        return self.from_buffer_copy(socket_buffer)</p>
-<pre><code>def __init__(self,socket_buffer=None):
-    self.protocol_map = {1:&apos;ICMP&apos;, 6:&apos;TCP&apos;, 17:&apos;UDP&apos;}
-    self.src_address = socket.inet_ntoa(struct.pack(&quot;&lt;L&quot;,self.src))
-    self.dst_address = socket.inet_ntoa(struct.pack(&quot;&lt;L&quot;,self.dst))
-
-    try:
-        self.protocol = self.protocol_map[self.protocol_num]
-
-    except:
-        self.protocol = str(self.protocol_num)</code></pre><p>if os.name == “nt”:<br>    socket_protocol = socket.IPPROTO_IP</p>
-<p>else:<br>    socket_protocol = socket.IPPROTO_ICMP</p>
-<p>sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)</p>
-<p>sniffer.bind((host,0))</p>
-<p>sniffer.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL,1)</p>
-<p>if os.name == ‘nt’:<br>    sniffer.ioctl(socket.SIO_RCVALL,socket.RCVALL_ON)</p>
-<p>try:<br>    while True:<br>        raw_buffer = sniffer.recvfrom(65565)[0]<br>        ip_header = IP(raw_buffer[0:20])<br>        print(“Protocol:%s %s -&gt; %s”%(ip_header.protocol,ip_header.src_address,ip_header.dst_address))<br>except:<br>    if os.name == “nt”:<br>        sniffer.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)</p>
-
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">import os</span><br><span class="line">import struct</span><br><span class="line">from ctypes import *</span><br><span class="line"></span><br><span class="line">struct: 按照指定格式将Python数据转换为字符串,该字符串为字节流,如网络传输时,不能传输int,此时先将int转化为字节流,然后再发送;</span><br><span class="line">        按照指定格式将字节流转换为Python指定的数据类型;</span><br><span class="line">ICMP协议：ICMP协议用于IP主机、路由器之间传递控制消息，这里的控制消息可以包括很多种：数据报错误信息、网络状况信息、主机状况信息等;</span><br><span class="line">        虽然这些控制消息虽然并不传输用户数据，但对于用户数据报的有效递交起着重要作用，从TCP&#x2F;IP的分层结构看ICMP属于网络层，</span><br><span class="line">        它配合着IP数据报的提交，提高IP数据报递交的可靠性。ICMP是封装在IP数据报中进行发送的，从这点看来，</span><br><span class="line">        ICMP协议又有点像一个传输层协议，其实不然，因为ICMP报文的目的不是目的主机上的某个应用程序，</span><br><span class="line">        它不为应用程序提供传输服务，ICMP报文的目的是目的主机上的网络层处理软件。</span><br><span class="line">        简单的来说，ICMP协议就像奔波于网络中的一名医生，它能及时检测并汇报网络中可能存在的问题，</span><br><span class="line">        为解决网络错误或拥塞提供了最有效的手段</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">host &#x3D; &#39;192.168.249.1&#39;</span><br><span class="line"></span><br><span class="line">class IP(Structure):</span><br><span class="line">    _fields_ &#x3D; [</span><br><span class="line">        (&quot;ihl&quot;, c_ubyte, 4),</span><br><span class="line">        (&quot;version&quot;, c_ubyte, 4),</span><br><span class="line">        (&quot;tos&quot;, c_ubyte),</span><br><span class="line">        (&quot;len&quot;, c_ushort),</span><br><span class="line">        (&quot;id&quot;, c_ushort),</span><br><span class="line">        (&quot;offset&quot;, c_ushort),</span><br><span class="line">        (&quot;ttl&quot;, c_ubyte),</span><br><span class="line">        (&quot;protocol_num&quot;, c_ubyte),</span><br><span class="line">        (&quot;sum&quot;, c_ushort),</span><br><span class="line">        (&quot;src&quot;, c_ulong),</span><br><span class="line">        (&quot;dst&quot;, c_ulong)</span><br><span class="line">        ]</span><br><span class="line">    def __new__(self, socket_buffer&#x3D;None):</span><br><span class="line">        return self.from_buffer_copy(socket_buffer)</span><br><span class="line"></span><br><span class="line">    def __init__(self,socket_buffer&#x3D;None):</span><br><span class="line">        self.protocol_map &#x3D; &#123;1:&#39;ICMP&#39;, 6:&#39;TCP&#39;, 17:&#39;UDP&#39;&#125;</span><br><span class="line">        self.src_address &#x3D; socket.inet_ntoa(struct.pack(&quot;&lt;L&quot;,self.src))</span><br><span class="line">        self.dst_address &#x3D; socket.inet_ntoa(struct.pack(&quot;&lt;L&quot;,self.dst))</span><br><span class="line"></span><br><span class="line">        try:</span><br><span class="line">            self.protocol &#x3D; self.protocol_map[self.protocol_num]</span><br><span class="line"></span><br><span class="line">        except:</span><br><span class="line">            self.protocol &#x3D; str(self.protocol_num)</span><br><span class="line"></span><br><span class="line">if os.name &#x3D;&#x3D; &quot;nt&quot;:</span><br><span class="line">    socket_protocol &#x3D; socket.IPPROTO_IP</span><br><span class="line"></span><br><span class="line">else:</span><br><span class="line">    socket_protocol &#x3D; socket.IPPROTO_ICMP</span><br><span class="line"></span><br><span class="line">sniffer &#x3D; socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)</span><br><span class="line"></span><br><span class="line">sniffer.bind((host,0))</span><br><span class="line"></span><br><span class="line">sniffer.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL,1)</span><br><span class="line"></span><br><span class="line">if os.name &#x3D;&#x3D; &#39;nt&#39;:</span><br><span class="line">    sniffer.ioctl(socket.SIO_RCVALL,socket.RCVALL_ON)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    while True:</span><br><span class="line">        raw_buffer &#x3D; sniffer.recvfrom(65565)[0]</span><br><span class="line">        ip_header &#x3D; IP(raw_buffer[0:20])</span><br><span class="line">        print(&quot;Protocol:%s %s -&gt; %s&quot;%(ip_header.protocol,ip_header.src_address,ip_header.dst_address))</span><br><span class="line">except:</span><br><span class="line">    if os.name &#x3D;&#x3D; &quot;nt&quot;:</span><br><span class="line">        sniffer.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)</span><br><span class="line">    print(&#39;出现错误！&#39;)</span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -195,7 +174,7 @@ class IP(Structure):,">
             <div class="box animated fadeInRight">
                 <div class="subbox">
                     <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
-                    <p>Mr.mei</p>
+                    <p>阳光下的猪</p>
                     <span>冲破黑暗的牢笼，迎向光明的到来。</span>
                     <dl>
                         <dd><a href="https://github.com/TriDiamond" target="_blank"><span
@@ -232,7 +211,7 @@ class IP(Structure):,">
     <p class="copyright" id="copyright">
         &copy; 2020
         <span class="gradient-text">
-            Mr.mei
+            阳光下的猪
         </span>.
         Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
