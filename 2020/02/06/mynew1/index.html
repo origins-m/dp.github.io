@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="12345struct: 按照指定格式将Python数据转换为字符串,该字符串为字节流,如网络传输时,不能传输int,        此时先将int转化为字节流,然后再发送;按照指定格式将字节流转换,"> 
+    <meta name="description" content="struct: 按照指定格式将Python数据转换为字符串,该字符串为字节流,如网络传输时,不能传输int,此时先将int转化为字节流,然后再发送;按照指定格式将字节流转换为Python指定的数据类,"> 
     <meta name="author" content="阳光下的猪"> 
     <link rel="alternative" href="atom.xml" title="singularity" type="application/atom+xml"> 
     <link rel="icon" href="/dp.github.io/img/favicon.png"> 
@@ -99,7 +99,7 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.7k
+                    2.2k
                 </span>
                 
                 
@@ -139,7 +139,8 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct: 按照指定格式将Python数据转换为字符串,该字符串为字节流,如网络传输时,不能传输int,</span><br><span class="line">        此时先将int转化为字节流,然后再发送;按照指定格式将字节流转换为Python指定的数据类型;</span><br><span class="line"></span><br><span class="line">ICMP协议：ICMP协议用于IP主机、路由器之间传递控制消息，这里的控制消息可以包括很多种：数据报错误信息、</span><br><span class="line">		 网络状况信息、主机状况信息等;虽然这些控制消息虽然并不传输用户数据，但对于用户数据报的有效递交起		  着重要作用，从TCP&#x2F;IP的分层结构看ICMP属于网络层,它配合着IP数据报的提交，提高IP数据报递交的可靠		 性。ICMP是封装在IP数据报中进行发送的，从这点看来，ICMP协议又有点像一个传输层协议，其实不然，因		  为ICMP报文的目的不是目的主机上的某个应用程序，它不为应用程序提供传输服务，ICMP报文的目的是目的		  主机上的网络层处理软件。简单的来说，ICMP协议就像奔波于网络中的一名医生，它能及时检测并汇报网络			 中可能存在的问题，为解决网络错误或拥塞提供了最有效的手段。</span><br></pre></td></tr></table></figure>
+            <p>struct: 按照指定格式将Python数据转换为字符串,该字符串为字节流,如网络传输时,不能传输int,此时先将int转化为字节流,然后再发送;按照指定格式将字节流转换为Python指定的数据类型;</p>
+<p>ICMP协议：ICMP协议用于IP主机、路由器之间传递控制消息，这里的控制消息可以包括很多种:数据报错误信息、网络状况信息、主机状况信息等;虽然这些控制消息虽然并不传输用户数据，但对于用户数据报的有效递交起着重要作用，从TCP//IP的分层结构看ICMP属于网络层,它配合着IP数据报的提交,提高IP数据报递交的可靠性。ICMP是封装在IP数据报中进行发送的，从这点看来 ICMP 协议又有点像一个传输层协议，其实不然，因为ICMP报文的目的不是目的主机上的某个应用程序，它不为应用程序提供传输服务，ICMP报文的目的是目的主机上的网络层处理软件。简单的来说,ICMP协议就像奔波于网络中的一名医生,它能及时检测并汇报网络中可能存在的问题，为解决网络错误或拥塞提供了最有效的手段。</p>
 <p>import socket<br>import os<br>import struct<br>from ctypes import *</p>
 <p>host = ‘192.168.249.1’</p>
 <p>class IP(Structure):<br>    <em>fields = [<br>        (“ihl”, c_ubyte, 4),<br>        (“version”, c_ubyte, 4),<br>        (“tos”, c_ubyte),<br>        (“len”, c_ushort),<br>        (“id”, c_ushort),<br>        (“offset”, c_ushort),<br>        (“ttl”, c_ubyte),<br>        (“protocol_num”, c_ubyte),<br>        (“sum”, c_ushort),<br>        (“src”, c_ulong),<br>        (“dst”, c_ulong)<br>        ]<br>    def <em>_new</em></em>(self, socket_buffer=None):<br>        return self.from_buffer_copy(socket_buffer)<br>    def <strong>init</strong>(self,socket_buffer=None):<br>        self.protocol_map = {1:’ICMP’, 6:’TCP’, 17:’UDP’}<br>        self.src_address = socket.inet_ntoa(struct.pack(“&lt;L”,self.src))<br>        self.dst_address = socket.inet_ntoa(struct.pack(“&lt;L”,self.dst))<br>    ​    try:<br>            self.protocol = self.protocol_map[self.protocol_num]<br>        except:<br>            self.protocol = str(self.protocol_num)<br>if os.name == “nt”:<br>    socket_protocol = socket.IPPROTO_IP<br>else:<br>    socket_protocol = socket.IPPROTO_ICMP<br>sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)<br>sniffer.bind((host,0))<br>sniffer.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL,1)<br>if os.name == ‘nt’:<br>    sniffer.ioctl(socket.SIO_RCVALL,socket.RCVALL_ON)<br>try:<br>    while True:<br>        raw_buffer = sniffer.recvfrom(65565)[0]<br>        ip_header = IP(raw_buffer[0:20])<br>        print(“Protocol:%s %s -&gt; %s”%(ip_header.protocol,ip_header.src_address,ip_header.dst_address))<br>except:<br>    if os.name == “nt”:<br>        sniffer.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)<br>    print(‘出现错误！’)</p>
