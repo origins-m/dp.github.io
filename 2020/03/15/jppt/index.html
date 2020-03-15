@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    
+    <meta name="description" content="模块的重载：考虑到性能的原因，每个模块只被导入一次,放入字典sys.module中，如果你改变了模块的内容，你必须重启程序，python不支持重新加载或卸载之前导入的模块，可以使用importlib,"> 
     <meta name="author" content="阳光下的猪"> 
     <link rel="alternative" href="atom.xml" title="singularity" type="application/atom+xml"> 
     <link rel="icon" href="/dp.github.io/img/favicon.png"> 
@@ -98,13 +98,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    0
+                    6.2k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    6 mins.
                 </span>
                 
                 
@@ -138,7 +138,11 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            
+            <p><strong>模块的重载</strong>：考虑到性能的原因，每个模块只被导入一次,放入字典sys.module中，如果你改变了模块的内容，你必须重启程序，python不支持重新加载或卸载之前导入的模块，可以使用importlib 模块(python默认编码是ASCII编码，当程序出现非ASCII码时，python处理常常出现[UnicodeDecodeError:]错误，此时需要自己设置编码，通常为utf-8)。</p>
+<p><strong>具体代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import sys,importlib</span><br><span class="line">importlib.reload(sys)</span><br><span class="line">import time</span><br><span class="line">time1&#x3D;time.time()</span><br><span class="line">import os.path</span><br><span class="line">from pdfminer.pdfparser import PDFParser,PDFDocument</span><br><span class="line">from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter</span><br><span class="line">from pdfminer.converter import PDFPageAggregator</span><br><span class="line">from pdfminer.layout import LTTextBoxHorizontal,LAParams</span><br><span class="line">from pdfminer.pdfinterp import PDFTextExtractionNotAllowed</span><br><span class="line">result&#x3D;[]</span><br><span class="line">class CPdf2TxtManager():</span><br><span class="line">    def __init__(self):</span><br><span class="line">      &#39;&#39;&#39;&#39;&#39;</span><br><span class="line">      Constructor</span><br><span class="line">      &#39;&#39;&#39;</span><br><span class="line">    def changePdfToText(self, filePath):</span><br><span class="line">      file &#x3D; open(path, &#39;rb&#39;) # 以二进制读模式打开</span><br><span class="line">      #用文件对象来创建一个pdf文档分析器</span><br><span class="line">      praser &#x3D; PDFParser(file)</span><br><span class="line">      # 创建一个PDF文档</span><br><span class="line">      doc &#x3D; PDFDocument()</span><br><span class="line">      # 连接分析器 与文档对象</span><br><span class="line">      praser.set_document(doc)</span><br><span class="line">      doc.set_parser(praser)</span><br><span class="line">      # 提供初始化密码</span><br><span class="line">      # 如果没有密码 就创建一个空的字符串</span><br><span class="line">      doc.initialize()</span><br><span class="line">      # 检测文档是否提供txt转换，不提供就忽略</span><br><span class="line">      if not doc.is_extractable:</span><br><span class="line">        raise PDFTextExtractionNotAllowed</span><br><span class="line">      # 创建PDf 资源管理器 来管理共享资源</span><br><span class="line">      rsrcmgr &#x3D; PDFResourceManager()</span><br><span class="line">      # 创建一个PDF设备对象</span><br><span class="line">      laparams &#x3D; LAParams()</span><br><span class="line">      device &#x3D; PDFPageAggregator(rsrcmgr, laparams&#x3D;laparams)</span><br><span class="line">      # 创建一个PDF解释器对象</span><br><span class="line">      interpreter &#x3D; PDFPageInterpreter(rsrcmgr, device)</span><br><span class="line">      pdfStr &#x3D; &#39;&#39;</span><br><span class="line">      # 循环遍历列表，每次处理一个page的内容</span><br><span class="line">      for page in doc.get_pages(): # doc.get_pages() 获取page列表</span><br><span class="line">        interpreter.process_page(page)</span><br><span class="line">        # 接受该页面的LTPage对象</span><br><span class="line">        layout &#x3D; device.get_result()</span><br><span class="line">        for x in layout:</span><br><span class="line">          if hasattr(x, &quot;get_text&quot;):</span><br><span class="line">            # print x.get_text()</span><br><span class="line">            result.append(x.get_text())</span><br><span class="line">            fileNames &#x3D; os.path.splitext(filePath)</span><br><span class="line">            results &#x3D; x.get_text()</span><br><span class="line">            # print(results)</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">  &#39;&#39;&#39;&#39;&#39;</span><br><span class="line">   解析pdf 文本，保存到txt文件中</span><br><span class="line">  &#39;&#39;&#39;</span><br><span class="line">  path &#x3D; u&#39;D:\黑客攻防\书籍\git笔记.pdf&#39;</span><br><span class="line">  pdf2TxtManager &#x3D; CPdf2TxtManager()</span><br><span class="line">  pdf2TxtManager.changePdfToText(path)</span><br><span class="line">  time2 &#x3D; time.time()</span><br><span class="line">  print(u&#39;ok,解析pdf结束!&#39;)</span><br><span class="line">  print(u&#39;总共耗时：&#39; + str(time2 - time1) + &#39;s&#39;)</span><br></pre></td></tr></table></figure>
+
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
