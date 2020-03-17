@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>使用 python 解析 ppt 文档 - singularity</title>
+    <title>网络爬虫分类详解 - singularity</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="模块的重载：考虑到性能的原因，每个模块只被导入一次,放入字典sys.module中，如果你改变了模块的内容，你必须重启程序，python不支持重新加载或卸载之前导入的模块，可以使用importlib,"> 
+    <meta name="description" content="1.通用网络爬虫；        .1 通用网络爬虫又叫做全网爬虫，通用网络爬虫的爬取范围和数量巨大，正由于其爬取的数据是海量数据，        所以对于爬取速度和存储空间要求较高。通用网络在爬行,"> 
     <meta name="author" content="阳光下的猪"> 
     <link rel="alternative" href="atom.xml" title="singularity" type="application/atom+xml"> 
     <link rel="icon" href="/dp.github.io/img/favicon.png"> 
@@ -57,7 +57,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://origins-m.github.io/dp.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">使用 python 解析 ppt 文档</h3>
+        <h3 class="subtitle">网络爬虫分类详解</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -89,22 +89,22 @@
                 
                 <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
                 
-                三月 15, 2020
+                三月 17, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/dp.github.io/2020/03/15/jppt/" title="使用 python 解析 ppt 文档" class="">使用 python 解析 ppt 文档</a>
+            <h3 class="post-title animated fadeInDown"><a href="/dp.github.io/2020/03/17/pac1/" title="网络爬虫分类详解" class="">网络爬虫分类详解</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    7.8k
+                    8.6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    7 mins.
+                    8 mins.
                 </span>
                 
                 
@@ -117,7 +117,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/dp.github.io/tags/python/" rel="tag">python</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/dp.github.io/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
             
         </div>
     </div>
@@ -138,10 +138,41 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p><strong>模块的重载</strong>：考虑到性能的原因，每个模块只被导入一次,放入字典sys.module中，如果你改变了模块的内容，你必须重启程序，python不支持重新加载或卸载之前导入的模块，可以使用importlib 模块(python默认编码是ASCII编码，当程序出现非ASCII码时，python处理常常出现[UnicodeDecodeError:]错误，此时需要自己设置编码，通常为utf-8)。</p>
-<p><strong>具体代码：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys,importlib</span><br><span class="line">importlib.reload(sys)</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">time1=time.time()</span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfparser <span class="keyword">import</span> PDFParser,PDFDocument</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfinterp <span class="keyword">import</span> PDFResourceManager, PDFPageInterpreter</span><br><span class="line"><span class="keyword">from</span> pdfminer.converter <span class="keyword">import</span> PDFPageAggregator</span><br><span class="line"><span class="keyword">from</span> pdfminer.layout <span class="keyword">import</span> LTTextBoxHorizontal,LAParams</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfinterp <span class="keyword">import</span> PDFTextExtractionNotAllowed</span><br><span class="line">result=[]</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CPdf2TxtManager</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">      <span class="string">'''''</span></span><br><span class="line"><span class="string">      Constructor</span></span><br><span class="line"><span class="string">      '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">changePdfToText</span><span class="params">(self, filePath)</span>:</span></span><br><span class="line">      file = open(path, <span class="string">'rb'</span>) <span class="comment"># 以二进制读模式打开</span></span><br><span class="line">      <span class="comment">#用文件对象来创建一个pdf文档分析器</span></span><br><span class="line">      praser = PDFParser(file)</span><br><span class="line">      <span class="comment"># 创建一个PDF文档</span></span><br><span class="line">      doc = PDFDocument()</span><br><span class="line">      <span class="comment"># 连接分析器 与文档对象</span></span><br><span class="line">      praser.set_document(doc)</span><br><span class="line">      doc.set_parser(praser)</span><br><span class="line">      <span class="comment"># 提供初始化密码</span></span><br><span class="line">      <span class="comment"># 如果没有密码 就创建一个空的字符串</span></span><br><span class="line">      doc.initialize()</span><br><span class="line">      <span class="comment"># 检测文档是否提供txt转换，不提供就忽略</span></span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">not</span> doc.is_extractable:</span><br><span class="line">        <span class="keyword">raise</span> PDFTextExtractionNotAllowed</span><br><span class="line">      <span class="comment"># 创建PDf 资源管理器 来管理共享资源</span></span><br><span class="line">      rsrcmgr = PDFResourceManager()</span><br><span class="line">      <span class="comment"># 创建一个PDF设备对象</span></span><br><span class="line">      laparams = LAParams()</span><br><span class="line">      device = PDFPageAggregator(rsrcmgr, laparams=laparams)</span><br><span class="line">      <span class="comment"># 创建一个PDF解释器对象</span></span><br><span class="line">      interpreter = PDFPageInterpreter(rsrcmgr, device)</span><br><span class="line">      pdfStr = <span class="string">''</span></span><br><span class="line">      <span class="comment"># 循环遍历列表，每次处理一个page的内容</span></span><br><span class="line">      <span class="keyword">for</span> page <span class="keyword">in</span> doc.get_pages(): <span class="comment"># doc.get_pages() 获取page列表</span></span><br><span class="line">        interpreter.process_page(page)</span><br><span class="line">        <span class="comment"># 接受该页面的LTPage对象</span></span><br><span class="line">        layout = device.get_result()</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> layout:</span><br><span class="line">          <span class="keyword">if</span> hasattr(x, <span class="string">"get_text"</span>):</span><br><span class="line">            <span class="comment"># print x.get_text()</span></span><br><span class="line">            result.append(x.get_text())</span><br><span class="line">            fileNames = os.path.splitext(filePath)</span><br><span class="line">            results = x.get_text()</span><br><span class="line">            <span class="comment"># print(results)</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  <span class="string">'''''</span></span><br><span class="line"><span class="string">   解析pdf 文本，保存到txt文件中</span></span><br><span class="line"><span class="string">  '''</span></span><br><span class="line">  path = <span class="string">u'D:\text\book\text.pdf'</span></span><br><span class="line">  pdf2TxtManager = CPdf2TxtManager()</span><br><span class="line">  pdf2TxtManager.changePdfToText(path)</span><br><span class="line">  time2 = time.time()</span><br><span class="line">  print(<span class="string">u'ok,解析pdf结束!'</span>)</span><br><span class="line">  print(<span class="string">u'总共耗时：'</span> + str(time2 - time1) + <span class="string">'s'</span>)</span><br></pre></td></tr></table></figure>
+            <p>1.通用网络爬虫；<br>        .1 通用网络爬虫又叫做全网爬虫，通用网络爬虫的爬取范围和数量巨大，正由于其爬取的数据是海量数据，<br>        所以对于爬取速度和存储空间要求较高。通用网络在爬行页面的顺序要求上相对较低，同时由于待刷新的<br>        页面太多，通常采用并行工作方式，所以需要较长时间才可以刷新一次页面，所以存在一定的缺陷，这种<br>        网络爬虫主要应用于大型搜索引擎中，又非常高应用价值。通用网络爬虫主要由初始URL集合、URL队列、<br>        页面爬取模块、页面分析模块、页面数据库、链接过滤模块等构成。</p>
+<p>2.聚焦网络爬虫；<br>        .2 聚焦网络爬虫也叫做主题网络爬虫，是指按照预定好的主题，有选择地进行相关网页爬取。他和通用<br>        网络爬虫相比，不会将目标资源定位在整个互联网当中，而是将爬取目标网页定位在相关的页面中。这<br>        样极大地节省了硬件和网络资源，保存的页面也由于数量少而更快了，聚焦网络爬虫主要应用在对特定<br>        信息爬取，为某一特定人群提供服务。<br>3.增量式网络爬虫；<br>        .3 增量式网络爬虫，所谓增量式，对应着增量式更新。增量式更新指的是在更新的时候只更新改变的地方，<br>        而未改变的地方则不更新，所以增量式网络爬虫，在爬取网页的时候，只会在需要的时候爬区新产生或跟<br>        新的页面，对于没有更新的页面，则不会爬取。这样可有效减少数据下载量，减少时间和空间上的消费，<br>        但是再爬行算法上需要增加一些难度。<br>4.深层网络爬虫；<br>        .4  1web页面按存在方式可以分为表层网页和深层网页，表层网页指的是不需要提交表单，使用静态的超链    接，<br>        就可以直接访问静态页面。深层网页指的是那些大部分内容不能通过静态链接获取的、隐藏在搜索表单后面<br>        的，需要用户提交一些关键词才能获得的web页面。深层页面需要访问的信息数量是表层页面信息数量的几<br>        百倍，所以深层页面是主要的爬取对象。</p>
+<p>网络爬虫的基本原理：<br>    1.网络爬虫的基本工作流程；<br>    （1）获取初始的URL，该URL地址使用户自己制定的初始爬取的网页。<br>    （2）爬取对应的URL地址的网页时，获取新的URL地址。<br>    （3）将新的URL地址放入URL队列中。<br>    （4）从URL对列中读取新的URL，然后根据新的URL爬取网页，同时从新的网页中获取新的URL地址，重复上             述爬虫过程。<br>    （5）设置停止条件，如果没有设置停止条件爬虫会一直爬取直到无法获取新的URL。</p>
+<p>python网络请求：<br>    在python中实现HTTP网络请求常见三种方式：urllib、urlliib3、requests。<br>    1. urllib 模块<br>        .1 urllib是python自带模块，该模块提供了一个urlopen()方法，通过该方法指定URL发送网络请求来获取数据。<br>        urllib提供了多个子模块具体如下：<br>        模块名称         |                 描述<br>        urllib.request  |   该模块定义了打开URL（主要是HTTP）的方法和类。例如身份验证、重定向、cookie等。<br>        urllib.error    |   该模块主要包含异常类，基本的异常类是URLError。<br>        urllib.parse    |   该模块定义的功能分为两大类：URL解析和URL引用。<br>        urllib.robotparser | 该模块用于解析robots.txt 文件。</p>
+<pre><code>网络请求示例:</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例一</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="comment"># 打开指定需要爬取的网页</span></span><br><span class="line">response = urllib.request.urlopen(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">html = response.read()  <span class="comment"># 读取网页代码</span></span><br><span class="line">print(html)             <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例二</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="comment"># 将数据使用urlencode编码处理后，在使用encoding设置为utf-8编码</span></span><br><span class="line">data = bytes(urllib.parse.urlencode(&#123;<span class="string">'word'</span>:<span class="string">'hello'</span>&#125;),encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 打开指定需要爬取的网页</span></span><br><span class="line">response = urllib.request.urlopen(<span class="string">'http://httpbin.org/post'</span>,data=data)</span><br><span class="line">html = response.read()  <span class="comment"># 读取网页代码</span></span><br><span class="line">print(html)             <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
+<p>上面示例中，示例一是通过get请求方式获取网页内容，示例二是通过post请求方式获取网页内容。</p>
+<p>2.urllib3 模块<br>        .2 urllib3是一个功能强大、条理清晰、用于HTTP客户端的python库，许多python的原生系统已经开始使用urllib3.<br>        urllib3 提供了很多python标准库里所没有的重要特性：<br>        （1）线程安全。<br>        （2）连接池。<br>        （3）客户端SSL/TTS验证。<br>        （4）使用多部分编码上传文件。<br>        （5）Helpers 用于重试请求并处理HTTP重定向。<br>        （6）支持gzip和deflate编码。<br>        （7） 支持HTTP和SOCKS代理。<br>        （8）100% 的测试覆盖率。</p>
+<p>​        网络请求示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 创建 poolManager对象，用于处理于线程池的连接以及线程安全的所有细节。</span></span><br><span class="line">http = urllib3.poolManager()</span><br><span class="line"><span class="comment"># 对需要爬取的网页发送请求  get/post</span></span><br><span class="line">response = http.request(<span class="string">'GET'</span>,<span class="string">'http://httpbin.org/'</span>)</span><br><span class="line"><span class="comment"># response = http.request('POST','http://httpbin.org/',fields=&#123;'word':'hello'&#125;)</span></span><br><span class="line">print(response.data)    <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>requests 模块<br> 3-1 </p>
+<pre><code>requests 是第三方模块，该模块在实现HTTP请求时要比urllib 模块简单化很多，操作人性化。
+requests 功能特性如下:
+(1)Keep-Alive &amp; 连接池            (2)Unicode 响应体
+(3)国际化域名和URL                 (4)HTTP(S)代理支持
+(5)带持久Cookie 的会话             (6)文件分块上传
+(7)浏览器式的SSL认证               (8)流下载
+(9)自动内容解码                    (10)连接超时
+(11)基本/摘要式的身份验证            (12)分块请求
+(13)key/value Cookie              (14)支持.netrc
+(15)自动解压
+
+ 以GET请求为例，打印多种请求信息:</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">print(response.status_code)   <span class="comment"># 打印状态码</span></span><br><span class="line">print(response.url)   <span class="comment"># 打印请求url</span></span><br><span class="line">print(response.headers)   <span class="comment"># 打印头部信息</span></span><br><span class="line">print(response.cookies)   <span class="comment"># 打印cookie信息</span></span><br><span class="line">print(respomse.text)   <span class="comment"># 以文本形式打印网页源码</span></span><br><span class="line">print(response.content)   <span class="comment"># 以字节流形式打印网页源码</span></span><br><span class="line"></span><br><span class="line">以post请求，发送http网络请求:</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">'word'</span>:<span class="string">'hello'</span>&#125;</span><br><span class="line">response = requests.post(<span class="string">'https://www.baidu.com'</span>,data=data)</span><br><span class="line">print(response.content)</span><br></pre></td></tr></table></figure>
+
+<p> requests 模块不及提供了以上两种，还有多种方式:</p>
+<pre><code>(1) requests.put()     
+(2) requests.delete()  
+(3) requests.head()  
+(4) requests.options()</code></pre><p> 3-2</p>
+<pre><code>requests 模块提供了三种常见的网络异常类，示例如下:
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入 requests.exceptions 模块中三个异常类</span></span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> ReadTimeout, HTTPError, RequestException</span><br><span class="line">ReadTimeout（超时异常） HTTPError（HTTP异常） RequestException（请求异常）</span><br></pre></td></tr></table></figure></code></pre></li>
+</ol>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
