@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#爬虫分类"><span class="toc-text">爬虫分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#网络爬虫的基本原理："><span class="toc-text">网络爬虫的基本原理：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#python网络请求："><span class="toc-text">python网络请求：</span></a></li></ol>
 </div>
     
 </div>
@@ -142,36 +142,55 @@
 </span>
     </div>
     <div class="post-content ">
-        <p>1.通用网络爬虫；<br>        .1 通用网络爬虫又叫做全网爬虫，通用网络爬虫的爬取范围和数量巨大，正由于其爬取的数据是海量数据，<br>        所以对于爬取速度和存储空间要求较高。通用网络在爬行页面的顺序要求上相对较低，同时由于待刷新的<br>        页面太多，通常采用并行工作方式，所以需要较长时间才可以刷新一次页面，所以存在一定的缺陷，这种<br>        网络爬虫主要应用于大型搜索引擎中，又非常高应用价值。通用网络爬虫主要由初始URL集合、URL队列、<br>        页面爬取模块、页面分析模块、页面数据库、链接过滤模块等构成。</p>
-<p>2.聚焦网络爬虫；<br>        .2 聚焦网络爬虫也叫做主题网络爬虫，是指按照预定好的主题，有选择地进行相关网页爬取。他和通用<br>        网络爬虫相比，不会将目标资源定位在整个互联网当中，而是将爬取目标网页定位在相关的页面中。这<br>        样极大地节省了硬件和网络资源，保存的页面也由于数量少而更快了，聚焦网络爬虫主要应用在对特定<br>        信息爬取，为某一特定人群提供服务。<br>3.增量式网络爬虫；<br>        .3 增量式网络爬虫，所谓增量式，对应着增量式更新。增量式更新指的是在更新的时候只更新改变的地方，<br>        而未改变的地方则不更新，所以增量式网络爬虫，在爬取网页的时候，只会在需要的时候爬区新产生或跟<br>        新的页面，对于没有更新的页面，则不会爬取。这样可有效减少数据下载量，减少时间和空间上的消费，<br>        但是再爬行算法上需要增加一些难度。<br>4.深层网络爬虫；<br>        .4  1web页面按存在方式可以分为表层网页和深层网页，表层网页指的是不需要提交表单，使用静态的超链    接，<br>        就可以直接访问静态页面。深层网页指的是那些大部分内容不能通过静态链接获取的、隐藏在搜索表单后面<br>        的，需要用户提交一些关键词才能获得的web页面。深层页面需要访问的信息数量是表层页面信息数量的几<br>        百倍，所以深层页面是主要的爬取对象。</p>
-<p>网络爬虫的基本原理：<br>    1.网络爬虫的基本工作流程；<br>    （1）获取初始的URL，该URL地址使用户自己制定的初始爬取的网页。<br>    （2）爬取对应的URL地址的网页时，获取新的URL地址。<br>    （3）将新的URL地址放入URL队列中。<br>    （4）从URL对列中读取新的URL，然后根据新的URL爬取网页，同时从新的网页中获取新的URL地址，重复上             述爬虫过程。<br>    （5）设置停止条件，如果没有设置停止条件爬虫会一直爬取直到无法获取新的URL。</p>
-<p>python网络请求：<br>    在python中实现HTTP网络请求常见三种方式：urllib、urlliib3、requests。<br>    1. urllib 模块<br>        .1 urllib是python自带模块，该模块提供了一个urlopen()方法，通过该方法指定URL发送网络请求来获取数据。<br>        urllib提供了多个子模块具体如下：<br>        模块名称         |                 描述<br>        urllib.request  |   该模块定义了打开URL（主要是HTTP）的方法和类。例如身份验证、重定向、cookie等。<br>        urllib.error    |   该模块主要包含异常类，基本的异常类是URLError。<br>        urllib.parse    |   该模块定义的功能分为两大类：URL解析和URL引用。<br>        urllib.robotparser | 该模块用于解析robots.txt 文件。</p>
-<pre><code>网络请求示例:</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例一</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="comment"># 打开指定需要爬取的网页</span></span><br><span class="line">response = urllib.request.urlopen(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">html = response.read()  <span class="comment"># 读取网页代码</span></span><br><span class="line">print(html)             <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
+        <h5 id="爬虫分类"><a href="#爬虫分类" class="headerlink" title="爬虫分类"></a>爬虫分类</h5><p>1.通用网络爬虫；<br>        通用网络爬虫又叫做全网爬虫，通用网络爬虫的爬取范围和数量巨大，正由于其爬取的数据是海量数据，<br>        所以对于爬取速度和存储空间要求较高。通用网络在爬行页面的顺序要求上相对较低，同时由于待刷新的<br>        页面太多，通常采用并行工作方式，所以需要较长时间才可以刷新一次页面，所以存在一定的缺陷，这种<br>        网络爬虫主要应用于大型搜索引擎中，又非常高应用价值。通用网络爬虫主要由初始URL集合、URL队列、<br>        页面爬取模块、页面分析模块、页面数据库、链接过滤模块等构成。</p>
+<p>2.聚焦网络爬虫；<br>        聚焦网络爬虫也叫做主题网络爬虫，是指按照预定好的主题，有选择地进行相关网页爬取。他和通用<br>        网络爬虫相比，不会将目标资源定位在整个互联网当中，而是将爬取目标网页定位在相关的页面中。这<br>        样极大地节省了硬件和网络资源，保存的页面也由于数量少而更快了，聚焦网络爬虫主要应用在对特定<br>        信息爬取，为某一特定人群提供服务。<br>3.增量式网络爬虫；<br>        增量式网络爬虫，所谓增量式，对应着增量式更新。增量式更新指的是在更新的时候只更新改变的地方，<br>        而未改变的地方则不更新，所以增量式网络爬虫，在爬取网页的时候，只会在需要的时候爬区新产生或跟<br>        新的页面，对于没有更新的页面，则不会爬取。这样可有效减少数据下载量，减少时间和空间上的消费，<br>        但是再爬行算法上需要增加一些难度。<br>4.深层网络爬虫；<br>        web页面按存在方式可以分为表层网页和深层网页，表层网页指的是不需要提交表单，使用静态的超链    接，<br>        就可以直接访问静态页面。深层网页指的是那些大部分内容不能通过静态链接获取的、隐藏在搜索表单后面<br>        的，需要用户提交一些关键词才能获得的web页面。深层页面需要访问的信息数量是表层页面信息数量的几<br>        百倍，所以深层页面是主要的爬取对象。</p>
+<h5 id="网络爬虫的基本原理："><a href="#网络爬虫的基本原理：" class="headerlink" title="网络爬虫的基本原理："></a>网络爬虫的基本原理：</h5><ul>
+<li><input disabled="" type="checkbox"> 网络爬虫的基本工作流程；</li>
+</ul>
+<p>​    （1）获取初始的URL，该URL地址使用户自己制定的初始爬取的网页。<br>    （2）爬取对应的URL地址的网页时，获取新的URL地址。<br>    （3）将新的URL地址放入URL队列中。<br>    （4）从URL对列中读取新的URL，然后根据新的URL爬取网页，同时从新的网页中获取新的URL地址，重复上             述爬虫过程。<br>    （5）设置停止条件，如果没有设置停止条件爬虫会一直爬取直到无法获取新的URL。</p>
+<h5 id="python网络请求："><a href="#python网络请求：" class="headerlink" title="python网络请求："></a>python网络请求：</h5><ul>
+<li><input disabled="" type="checkbox"> 在python中实现HTTP网络请求常见三种方式：urllib、urlliib3、requests。</li>
+</ul>
+<p>​    <strong>urllib 模块</strong><br>        urllib是python自带模块，该模块提供了一个urlopen()方法，通过该方法指定URL发送网络请求来获取数据。<br>        urllib提供了多个子模块具体如下：</p>
+<p>​        模块名称            |                 描述<br>        urllib.request   |   该模块定义了打开URL（主要是HTTP）的方法和类。例如身份验证、重定向、cookie等。<br>        urllib.error        |   该模块主要包含异常类，基本的异常类是URLError。<br>        urllib.parse       |   该模块定义的功能分为两大类：URL解析和URL引用。<br>        urllib.robotparser | 该模块用于解析robots.txt 文件。</p>
+<ul>
+<li><input disabled="" type="checkbox"> 网络请求示例:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例一</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="comment"># 打开指定需要爬取的网页</span></span><br><span class="line">response = urllib.request.urlopen(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">html = response.read()  <span class="comment"># 读取网页代码</span></span><br><span class="line">print(html)             <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例二</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="comment"># 将数据使用urlencode编码处理后，在使用encoding设置为utf-8编码</span></span><br><span class="line">data = bytes(urllib.parse.urlencode(&#123;<span class="string">'word'</span>:<span class="string">'hello'</span>&#125;),encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 打开指定需要爬取的网页</span></span><br><span class="line">response = urllib.request.urlopen(<span class="string">'http://httpbin.org/post'</span>,data=data)</span><br><span class="line">html = response.read()  <span class="comment"># 读取网页代码</span></span><br><span class="line">print(html)             <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
 <p>上面示例中，示例一是通过get请求方式获取网页内容，示例二是通过post请求方式获取网页内容。</p>
-<p>2.urllib3 模块<br>        .2 urllib3是一个功能强大、条理清晰、用于HTTP客户端的python库，许多python的原生系统已经开始使用urllib3.<br>        urllib3 提供了很多python标准库里所没有的重要特性：<br>        （1）线程安全。<br>        （2）连接池。<br>        （3）客户端SSL/TTS验证。<br>        （4）使用多部分编码上传文件。<br>        （5）Helpers 用于重试请求并处理HTTP重定向。<br>        （6）支持gzip和deflate编码。<br>        （7） 支持HTTP和SOCKS代理。<br>        （8）100% 的测试覆盖率。</p>
-<p>​    网络请求示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 创建 poolManager对象，用于处理于线程池的连接以及线程安全的所有细节。</span></span><br><span class="line">http = urllib3.poolManager()</span><br><span class="line"><span class="comment"># 对需要爬取的网页发送请求  get/post</span></span><br><span class="line">response = http.request(<span class="string">'GET'</span>,<span class="string">'http://httpbin.org/'</span>)</span><br><span class="line"><span class="comment"># response = http.request('POST','http://httpbin.org/',fields=&#123;'word':'hello'&#125;)</span></span><br><span class="line">print(response.data)    <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
+<p>​    <strong>urllib3 模块</strong><br>        urllib3是一个功能强大、条理清晰、用于HTTP客户端的python库，许多python的原生系统已经开始使用urllib3.<br>        urllib3 提供了很多python标准库里所没有的重要特性：<br>        （1）线程安全。<br>        （2）连接池。<br>        （3）客户端SSL/TTS验证。<br>        （4）使用多部分编码上传文件。<br>        （5）Helpers 用于重试请求并处理HTTP重定向。<br>        （6）支持gzip和deflate编码。<br>        （7） 支持HTTP和SOCKS代理。<br>        （8）100% 的测试覆盖率。</p>
+<ul>
+<li><input disabled="" type="checkbox"> 网络请求示例:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 poolManager对象，用于处理于线程池的连接以及线程安全的所有细节。</span></span><br><span class="line">http = urllib3.poolManager()</span><br><span class="line"><span class="comment"># 对需要爬取的网页发送请求  get/post</span></span><br><span class="line">response = http.request(<span class="string">'GET'</span>,<span class="string">'http://httpbin.org/'</span>)</span><br><span class="line"><span class="comment"># response = http.request('POST','http://httpbin.org/',fields=&#123;'word':'hello'&#125;)</span></span><br><span class="line">print(response.data)    <span class="comment"># 打印读取内容</span></span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li><p>requests 模块</p>
-<pre><code>requests 是第三方模块，该模块在实现HTTP请求时要比urllib 模块简单化很多，操作人性化。
-requests 功能特性如下:
-(1)Keep-Alive &amp; 连接池            (2)Unicode 响应体
-(3)国际化域名和URL                 (4)HTTP(S)代理支持
-(5)带持久Cookie 的会话             (6)文件分块上传
-(7)浏览器式的SSL认证               (8)流下载
-(9)自动内容解码                    (10)连接超时
-(11)基本/摘要式的身份验证            (12)分块请求
-(13)key/value Cookie              (14)支持.netrc
-(15)自动解压</code></pre><p> 以GET请求为例，打印多种请求信息:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">print(response.status_code)   <span class="comment"># 打印状态码</span></span><br><span class="line">print(response.url)   <span class="comment"># 打印请求url</span></span><br><span class="line">print(response.headers)   <span class="comment"># 打印头部信息</span></span><br><span class="line">print(response.cookies)   <span class="comment"># 打印cookie信息</span></span><br><span class="line">print(respomse.text)   <span class="comment"># 以文本形式打印网页源码</span></span><br><span class="line">print(response.content)   <span class="comment"># 以字节流形式打印网页源码</span></span><br><span class="line"></span><br><span class="line">以post请求，发送http网络请求:</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">'word'</span>:<span class="string">'hello'</span>&#125;</span><br><span class="line">response = requests.post(<span class="string">'https://www.baidu.com'</span>,data=data)</span><br><span class="line">print(response.content)</span><br></pre></td></tr></table></figure>
-
+<p><strong>requests 模块</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> <p>​    requests 是第三方模块，该模块在实现HTTP请求时要比urllib 模块简单化很多，操作人性化。</p>
+<p>​    <strong>requests 功能特性如下:</strong></p>
+<p>​    (1)Keep-Alive &amp; 连接池            (2)Unicode 响应体</p>
+<p>​    (3)国际化域名和URL                 (4)HTTP(S)代理支持</p>
+<p>​    (5)带持久Cookie 的会话           (6)文件分块上传</p>
+<p>​    (7)浏览器式的SSL认证              (8)流下载</p>
+<p>​    (9)自动内容解码                        (10)连接超时</p>
+<p>​    (11)基本/摘要式的身份验证            (12)分块请求</p>
+<p>   (13)key/value Cookie              (14)支持.netrc</p>
+<p>   (15)自动解压</p>
 </li>
-</ol>
-<p>requests 模块不及提供了以上两种，还有多种方式:<br>    (1) requests.put()<br>    (2) requests.delete()<br>    (3) requests.head()<br>    (4) requests.options()</p>
-<p>​    requests 模块提供了三种常见的网络异常类，示例如下:</p>
+<li><input disabled="" type="checkbox"> <p>以GET请求为例，打印多种请求信息:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">print(response.status_code)   <span class="comment"># 打印状态码</span></span><br><span class="line">print(response.url)   <span class="comment"># 打印请求url</span></span><br><span class="line">print(response.headers)   <span class="comment"># 打印头部信息</span></span><br><span class="line">print(response.cookies)   <span class="comment"># 打印cookie信息</span></span><br><span class="line">print(respomse.text)   <span class="comment"># 以文本形式打印网页源码</span></span><br><span class="line">print(response.content)   <span class="comment"># 以字节流形式打印网页源码</span></span><br><span class="line"></span><br><span class="line">以post请求，发送http网络请求:</span><br><span class="line">    <span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">    data = &#123;<span class="string">'word'</span>:<span class="string">'hello'</span>&#125;</span><br><span class="line">    response = requests.post(<span class="string">'https://www.baidu.com'</span>,data=data)</span><br><span class="line">    print(response.content)</span><br></pre></td></tr></table></figure>
+</li>
+<li><input disabled="" type="checkbox"> <p>requests 模块不及提供了以上两种，还有多种方式:</p>
+<p>​    (1) requests.put()     </p>
+<p>​    (2) requests.delete()  </p>
+<p>​    (3) requests.head()  </p>
+<p>​    (4) requests.options()</p>
+</li>
+<li><input disabled="" type="checkbox"> <p>​    requests 模块提供了三种常见的网络异常类，示例如下:</p>
+</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入 requests.exceptions 模块中三个异常类</span></span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> ReadTimeout, HTTPError, RequestException</span><br><span class="line">ReadTimeout（超时异常） HTTPError（HTTP异常） RequestException（请求异常）</span><br></pre></td></tr></table></figure>
 
         
