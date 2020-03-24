@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#python"><span class="toc-text">python</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#线程与进程的区别："><span class="toc-text">线程与进程的区别：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GIL（全局解释器锁）"><span class="toc-text">GIL（全局解释器锁）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#深拷贝、浅拷贝："><span class="toc-text">深拷贝、浅拷贝：</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#python"><span class="toc-text">python</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#线程与进程的区别："><span class="toc-text">线程与进程的区别：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#进程："><span class="toc-text">进程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#线程："><span class="toc-text">线程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#携程："><span class="toc-text">携程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GIL（全局解释器锁）"><span class="toc-text">GIL（全局解释器锁）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#深拷贝、浅拷贝："><span class="toc-text">深拷贝、浅拷贝：</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -149,7 +149,139 @@
 <li>由于进程间是相互独立的，因此一个进程的崩溃不会影响到其他进程；而线程是包含在进程之内的， 线程的崩溃就会引发进程的崩溃，继而导致同一个进程内的其他线程也崩溃。多线程非全局变量是否要加锁；在多线程开发中，全局变量是多个线程都共享的数据，为了防止数据混乱，通常使用互斥锁。而局部变量等是各自线程的，是非共享的，所以不需要使用互斥锁。</li>
 </ol>
 </blockquote>
+<h5 id="进程："><a href="#进程：" class="headerlink" title="进程："></a>进程：</h5><ol>
+<li><strong>进程定义</strong></li>
+</ol>
+<hr>
+<ul>
+<li>进程是资源分配最小单位。</li>
+<li>当一个可执行程序被系统执行（分配内存资源）就变一个进程。</li>
+</ul>
+<hr>
+<ol start="2">
+<li><p><strong>进程定义拓展</strong></p>
+<hr>
+</li>
+</ol>
+<ol>
+<li>程序并不能单独运行，只有将程序装载到内存中，系统为它分配资源才能运行，这种执行的程序就称为进程。</li>
+<li>程序和进程的区别就在于：程序是指令集合，它是进程运行的静态描述文本；进程是程序一次执行活动，属于动态概念。</li>
+<li>在多道编程中，我们允许多个程序同时加载到内存中，在操作系统的调度下，可以实现并发执行。</li>
+<li>进程的出现让每个用户感觉自己独享CPU，因此，进程就是为了在CPU上实现多道编程而提出的。</li>
+<li>进程之间有自己独立的内存，各进程之间不能相互访问。</li>
+</ol>
+<hr>
+<ol start="3">
+<li><p><strong>多道编程概念</strong></p>
+<ol>
+<li>多道编程：在计算机内存中同时存放几道相互独立的程序，它们共享系统资源，相互穿插运行。</li>
+<li>单道编程：计算机内存中只允许一个程序运行。</li>
+</ol>
+</li>
+<li><p><strong>进程间访问数据的四种方法</strong></p>
+<p>注：不同进程间内存是不共享的，所以相互之间不能访问数据。</p>
+<ol>
+<li>利用Queues实现父进程到子进程（或子进程间）的数据传递。</li>
+<li>使用管道pipe实现两个进程间数据传递。</li>
+<li>Managers实现多进程间数据共享。</li>
+</ol>
+</li>
+<li><p><strong>进程池</strong></p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process . Pool</span><br><span class="line"><span class="keyword">import</span> time, os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(i)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'in the process'</span>,os.getpid()) <span class="comment"># 打印子进程pid</span></span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(arg)</span>:</span></span><br><span class="line">    print(<span class="string">'--&gt;exec done:'</span>,arg,os.getpid())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pool = Pool(<span class="number">3</span>)  <span class="comment"># 进程最多允许5个进程放入进程池</span></span><br><span class="line">    print(<span class="string">'主进程pid:'</span>,os.getpid()) <span class="comment"># 打印父进程pid</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="comment"># 用法一，callback作用是指定只有当Foo运行结束后就执行callback调用的函数，父进程调用的				# callback函数。</span></span><br><span class="line">        pool.apply_async(func=foo,args=(i,),callback=call)</span><br><span class="line">        <span class="comment"># 用法二， pool.apply(func=foo,args=(i,))</span></span><br><span class="line">        </span><br><span class="line">	print(<span class="string">'end'</span>)</span><br><span class="line">    pool.close() <span class="comment"># 关闭进程池。</span></span><br><span class="line">    pool.join() <span class="comment"># 进程池中进程执行完毕后在关闭，如果没有程序直接关闭。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="线程："><a href="#线程：" class="headerlink" title="线程："></a>线程：</h5><ol>
+<li><strong>线程定义</strong></li>
+</ol>
+<hr>
+<ul>
+<li>线程是操作系统调度最小单位。</li>
+<li>它包含在进程之中，是进程实际运作单位。</li>
+<li>进程本身是无法自己执行的，要操作CPU，必须创建一个进程，线程是一系列指令的集合。</li>
+</ul>
+<hr>
+<ol start="2">
+<li><p><strong>线程定义拓展</strong></p>
+<ol>
+<li>线程是操作系统能够进行运算调度最小单位。包含在进程之中，是进程实际运作单位。</li>
+<li>一个线程是一个单一顺序的控制流，一个进程中可以并发多个线程，每个线程并行执行不同任务。</li>
+<li>无论启动多少个线程，你有多少个CPU，python在执行时只会在同一时刻运行一个线程。</li>
+<li>所有在同一个进程里的线程是共享一块内存资源的，不同进程间内存空间不同。同一个进程中的各线程可以相互访问资源，线程可以操作同进程中其它线程，但进程仅能操作子进程。</li>
+<li>两个进程间通信，必须通过一个中间代理。</li>
+</ol>
+</li>
+</ol>
+<ol start="3">
+<li><p><strong>线程锁</strong></p>
+<hr>
+<ol>
+<li>当一个线程对某个资源进行CPU计算的操作时加一个线程锁，只有当前线程计算完成 主动释放锁，其它线程才能操作。</li>
+<li>这样防止了还未计算完成，释放GIL锁后其它线程对这个资源操作导致混乱问题。</li>
+</ol>
+</li>
+<li><p><strong>Semaphore（信号量）</strong></p>
+<hr>
+<ol>
+<li>互斥锁 同时只允许一个线程更改数据，而 semaphore 是同时允许一定数量的线程更改数据。</li>
+<li>作用就是同一时刻允许运行的线程数量。</li>
+<li>比如餐厅由三个座位，那么最多只允许三个人吃饭，后面的人只能等前面的人吃饭完后才能进去吃饭。</li>
+</ol>
+</li>
+<li><hr>
+<p>*<em>setDaemon(): 守护线程，主线程退出时，需要⼦线程随主线程退出 *</em></p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">start_time = time.time()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sayhi</span><span class="params">(num)</span>:</span> <span class="comment">#定义每个线程要运行的函数</span></span><br><span class="line">	print(<span class="string">"running on number:%s"</span> %num)</span><br><span class="line"> 	time.sleep(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">50</span>):</span><br><span class="line">    t = threading.Thread(target=sayhi,args=(<span class="string">'t-%s'</span>%i,))</span><br><span class="line">    t.setDaemon(<span class="literal">True</span>) <span class="comment">#把当前线程变成守护线程，必须在 t.start()前设置</span></span><br><span class="line">    t.start() <span class="comment">#启动一个线程，程序不会阻塞</span></span><br><span class="line">print(<span class="string">'cost time:'</span>,time.time() - start_time)</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="6">
+<li><p><strong>线程池实现并发</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fetch_request</span><span class="params">(url)</span>:</span></span><br><span class="line"> 	result = requests.get(url)</span><br><span class="line"> 	print(result.text)</span><br><span class="line">url_list = [</span><br><span class="line"> <span class="string">'https://www.baidu.com'</span>,</span><br><span class="line"> <span class="string">'https://www.google.com/'</span>, <span class="comment">#google 页面会卡住，知道页面超时后这个进程才结束</span></span><br><span class="line"> <span class="string">'http://dig.chouti.com/'</span>, <span class="comment">#chouti 页面内容会直接返回，不会等待 Google 页面的返回</span></span><br><span class="line">]</span><br><span class="line">pool = ThreadPoolExecutor(<span class="number">10</span>) <span class="comment"># 创建一个线程池，最多开 10 个线程</span></span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> url_list:</span><br><span class="line"> 	pool.submit(fetch_request,url) <span class="comment"># 去线程池中获取一个线程，线程去执行 fetch_request 方法</span></span><br><span class="line">pool.shutdown(<span class="literal">True</span>) <span class="comment"># 主线程自己关闭，让子线程自己拿任务执行</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h5 id="携程："><a href="#携程：" class="headerlink" title="携程："></a>携程：</h5><ol>
+<li><strong>什么是协程</strong><ol>
+<li>协程能保留上一次调用时的状态，每次过程重入时，就相当于进入上一次天调用的状态。</li>
+<li>协程最主要的作用是 在单线程的条件下实现并发的效果，但实际上还是串行 的（像yield一样）</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><p><strong>协程缺点（无法利用多核资源）</strong></p>
+<ol>
+<li>协程本身是个单线程，他不能同时将单个CPU 的多个核 使用，协程需要和进程配合才能运行在多个CPU上，线程阻塞（Blocking）操作会阻塞掉整个程序。</li>
+</ol>
+</li>
+<li><p>*<em>协程为何能处理⼤并发 1：Greenlet 遇到 I/O ⼿动切换 *</em></p>
+<ol>
+<li>协程之所以快就是因为遇到 I/O 操作就切换（最后只有CPU运算）。</li>
+<li>其实Gevent模块仅仅是对greenlet的再次封装，将 I/O 间的手动切换变成自动切换。</li>
+</ol>
+</li>
+<li><p><strong>协程为何能处理⼤并发 2：Gevent 遇到 I/O ⾃动切换</strong> </p>
+<ol>
+<li>Gevent 是⼀个第三⽅库，可以轻松通过 gevent 实现并发同步或异步编程 。</li>
+<li>在 gevent 中⽤到的主要模式是 Greenlet, 它是以 C 扩展模块形式接⼊ Python 的轻量级协程 。</li>
+<li>Greenlet 全部运⾏在主程序操作系统进程的内部，但它们被协作式地调度。 </li>
+<li>Gevent 原理是只要遇到 I/O 操作就会⾃动切换到下⼀个协程 。</li>
+</ol>
+</li>
+<li><p><strong>使⽤协程处理并发</strong> </p>
+<p><strong>注：Gevent 只⽤起⼀个线程，当请求发出去后 gevent 就不管,永远就只有⼀个线程⼯作，谁先回来先处理</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> monkey</span><br><span class="line">monkey.patch_all()</span><br><span class="line"><span class="comment"># 这些请求谁先回来就先处理谁</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fetch_async</span><span class="params">(method, url, req_kwargs)</span>:</span></span><br><span class="line"> 	response = requests.request(method=method, url=url, **req_kwargs)</span><br><span class="line"> 	print(response.url, response.content)</span><br><span class="line"><span class="comment"># ##### 发送请求 #####</span></span><br><span class="line">gevent.joinall([</span><br><span class="line"> gevent.spawn(fetch_async, method=<span class="string">'get'</span>, url=<span class="string">'https://www.python.org/'</span>, req_kwargs=&#123;&#125;),</span><br><span class="line"> gevent.spawn(fetch_async, method=<span class="string">'get'</span>, url=<span class="string">'https://www.google.com/'</span>, req_kwargs=&#123;&#125;),</span><br><span class="line"> gevent.spawn(fetch_async, method=<span class="string">'get'</span>, url=<span class="string">'https://github.com/'</span>, req_kwargs=&#123;&#125;),</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<hr>
+</li>
+</ol>
 <h5 id="GIL（全局解释器锁）"><a href="#GIL（全局解释器锁）" class="headerlink" title="GIL（全局解释器锁）"></a>GIL（全局解释器锁）</h5><p><strong>描述Python GIL的概念， 以及它对python多线程的影响？</strong> </p>
+<p><strong>为了解决不同线程同时访问同一资源时，产生了GIL</strong></p>
 <p><strong>参考：</strong></p>
 <blockquote>
 <ol>
