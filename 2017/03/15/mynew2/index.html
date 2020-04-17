@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/dp.github.io/img/favicon.ico">
+
+    <title>
+        
+        扫描并输出局域网占用的 IP 地址 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/dp.github.io/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/dp.github.io/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 人生苦短  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/dp.github.io/" />
+        </div>
+        <div class="name">
+            <i>阳光下的猪</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/dp.github.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 人生苦短  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        扫描并输出局域网占用的 IP 地址
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-03-15 12:34:19</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#网络" title="网络">网络</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p><strong>sys.argv[] 指令:</strong> 是一个程序外部来获取参数的，0是指代码本身的路径。可以通过外部来获取多个参数，类似列表。所以使用[]来获取。</p>
+<p><strong>argparse</strong> :<br>是命令行解析模块；sys.argv[]是通过外部传的参数，无法通过编辑器直接运行，而是通过dos命令行里操作；两者可以结合使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys,  socket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">list_of_name = []</span><br><span class="line">list_of_ip = []</span><br><span class="line">thread_pool = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">showInfo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"""</span></span><br><span class="line"><span class="string">        命令格式：LAN_ip_hostname -all startip</span></span><br><span class="line"><span class="string">                LAN_ip_hostname -ip ipaddr</span></span><br><span class="line"><span class="string">                LAN_ip_hostname -hostname hostname</span></span><br><span class="line"><span class="string">        说明：   -all 扫描局域网中所有IP对应的 hostname，需要起始IP，如192.168.0.1</span></span><br><span class="line"><span class="string">                -ip 获取指定ip的hostname</span></span><br><span class="line"><span class="string">                -hostname 根据主机名，得到ip地址</span></span><br><span class="line"><span class="string">    """</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LanAll</span><span class="params">(startip)</span>:</span></span><br><span class="line">    index = startip.rfind(<span class="string">'.'</span>) <span class="comment"># 找出最右边 . 的索引</span></span><br><span class="line">    ipfirstpart = startip[<span class="number">0</span>:index + <span class="number">1</span>] <span class="comment"># ip 地址中前三位，如 192.168.0.1</span></span><br><span class="line">    intstart = int(startip[index + <span class="number">1</span>])  <span class="comment"># ip 地址最后一位，转为int</span></span><br><span class="line">    f = range(intstart,<span class="number">255</span>)</span><br><span class="line">    <span class="keyword">global</span> g_mutex</span><br><span class="line">    g_mutex = threading.Lock()  <span class="comment"># 初始化互斥锁</span></span><br><span class="line">    <span class="keyword">for</span> iplastpart <span class="keyword">in</span> f:</span><br><span class="line">        targetip = ipfirstpart + str(iplastpart) <span class="comment"># 拼接ip</span></span><br><span class="line">        <span class="comment"># 创建线程对象，存为 thread 线程要执行的函数由 target 指定，args 指定参数，</span></span><br><span class="line">        <span class="comment"># 可以是元组~。线程号从 1 开始</span></span><br><span class="line">        thread = threading.Thread(target=Lanlp2Name,args=(targetip,))</span><br><span class="line">        thread_pool.append(thread)</span><br><span class="line">        thread.start()</span><br><span class="line">    <span class="comment"># 阻塞主线程 collect all threads</span></span><br><span class="line">    <span class="keyword">for</span> pos <span class="keyword">in</span> f:</span><br><span class="line">        threading.Thread.join(thread_pool[pos - intstart])</span><br><span class="line">    <span class="comment">#输出结果</span></span><br><span class="line">    hosts = range(<span class="number">0</span>,len(list_of_name))</span><br><span class="line">    <span class="keyword">for</span> host <span class="keyword">in</span> hosts:</span><br><span class="line">        print(list_of_ip[host],<span class="string">'======&gt;'</span>,list_of_name[host])</span><br><span class="line">    print(<span class="string">'Find'</span>,len(list_of_name),<span class="string">'hosts.Done!'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Lanlp2Name</span><span class="params">(ip)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        (name, aliaslist,addresslist) = socket.gethostbyaddr(ip)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">global</span> g_mutex <span class="comment"># 再次声明</span></span><br><span class="line">    g_mutex.acquire()  <span class="comment"># 上锁</span></span><br><span class="line">    list_of_name.append(name)</span><br><span class="line">    list_of_ip.append(ip)</span><br><span class="line">    g_mutex.release()  <span class="comment"># 释放锁</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LanipToName</span><span class="params">(ip)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        (name, aliaslist,addresslist) = socket.gethostbyaddr(ip)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    print(<span class="string">'%s ======&gt;%s'</span>%(addresslist,name))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LanName2IP</span><span class="params">(name)</span>:</span></span><br><span class="line">    targetip = socket.gethostbyname(name)</span><br><span class="line">    print(name,<span class="string">'=====&gt;'</span>,targetip)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">if</span> len(sys.argv) &lt; <span class="number">3</span>:</span><br><span class="line">        print(<span class="string">'参数错误'</span>)</span><br><span class="line">        showInfo()</span><br><span class="line">        exit(<span class="number">1</span>)</span><br><span class="line">    cmds = [<span class="string">'-all'</span>,<span class="string">'-ip'</span>,<span class="string">'-hostname'</span>]</span><br><span class="line">    cmd = sys.argv[<span class="number">1</span>] <span class="comment"># 命令格式</span></span><br><span class="line">    target = sys.argv[<span class="number">2</span>] <span class="comment"># ip地址</span></span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> == cmds.count(cmd):</span><br><span class="line">        print(<span class="string">'参数错误啊'</span>)</span><br><span class="line">        showInfo()</span><br><span class="line">        exit(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'开始工作请等待...'</span>)</span><br><span class="line">        <span class="keyword">if</span> cmd == <span class="string">'-all'</span>:</span><br><span class="line">            LanAll(target) <span class="comment"># 输出所有的 主机 与 ip 名</span></span><br><span class="line">        <span class="keyword">elif</span> cmd  == <span class="string">'-ip'</span>:</span><br><span class="line">            LanipToName(target) <span class="comment"># 根据当前IP 输出主机名</span></span><br><span class="line">        <span class="keyword">elif</span> cmd == <span class="string">'-hostname'</span>:</span><br><span class="line">            LanName2IP(target)  <span class="comment"># 根据当前主机名输出ip</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/dp.github.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/dp.github.io/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

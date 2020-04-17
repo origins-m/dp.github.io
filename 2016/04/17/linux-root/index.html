@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        linux root用户密码破解 - undefined
         
     </title>
 
@@ -57,7 +57,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/dp.github.io/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -92,6 +92,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Root-用户破解流程"><span class="toc-text">Root 用户破解流程</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -116,37 +120,53 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2016-03-22</div>
-        <div class="post-info">
-            <a href="/dp.github.io/2016/03/22/oo/">
-                <h3>
-                    面向对象
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/dp.github.io/tags/#python" title="python">python</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        linux root用户密码破解
     </div>
-    
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2016-04-17 14:24:06</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="Root-用户破解流程"><a href="#Root-用户破解流程" class="headerlink" title="Root 用户破解流程"></a>Root 用户破解流程</h5><blockquote>
+<ol>
+<li>e ; 进入 VMware 页面 按 e 进入编辑模式。</li>
+<li>rd.break ; 在quiet后加入 rd.break。</li>
+<li>ctrl + x; 按 ctrl + x 进入 swtch_root 模式。</li>
+<li>mout -o remount,rw /sysroot ; 重新挂载分区。</li>
+<li>chroot /sysroot ; 切换根分区。</li>
+<li>passwd root ; 修改root密码，必须是8位以上复杂密码。</li>
+<li>touch /.autorelabel ; selinux 在重启后更新label。</li>
+<li>exit ； 退出。</li>
+<li>reboot ； 重启</li>
+</ol>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/dp.github.io/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -186,7 +206,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/dp.github.io/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
