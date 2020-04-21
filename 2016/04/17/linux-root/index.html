@@ -192,17 +192,13 @@
 </li>
 </ol>
 <p>如果<code>iptables</code>防火墙不能通过<code>save</code>保存规则，解决如下：</p>
-<p>yum软件包安装:</p>
-<ol>
-<li>挂载光盘<br>mount /dev/cdrom /media</li>
-</ol>
-<p>2.查看挂载<br>df</p>
-<p>3.配置yum<br>cd /etc/yum.repos.d/<br>mv CentOS-Media.repo /mnt<br>rm -rf *<br>mv /mnt/CentOS-Media.repo ./</p>
-<p>4.vi CentOS-Media.repo<br>[c8-media-BaseOS]<br>baseurl=file:///media/BaseOS<br>gpgcheck=0<br>enabled=1</p>
-<p>[c8-media-AppStream]<br>baseurl=file:///media/AppStream<br>gpgcheck=0<br>enabled=1</p>
-<p>5.查看yum可控制的软件包<br>yum list | wc -l<br>yum list | grep iptables</p>
-<p>6.yum安装rpm软件包<br>yum -y install iptables-service</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">yum软件包安装[centOS8]:</span><br><span class="line"></span><br><span class="line">1. 挂载光盘</span><br><span class="line">mount &#x2F;dev&#x2F;cdrom &#x2F;media</span><br><span class="line"></span><br><span class="line">2.查看挂载</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">3.配置yum</span><br><span class="line">cd &#x2F;etc&#x2F;yum.repos.d&#x2F;</span><br><span class="line">mv CentOS-Media.repo &#x2F;mnt</span><br><span class="line">rm -rf *</span><br><span class="line">mv &#x2F;mnt&#x2F;CentOS-Media.repo .&#x2F;</span><br><span class="line"></span><br><span class="line">4.vi CentOS-Media.repo 修改文件</span><br><span class="line">[c8-media-BaseOS]</span><br><span class="line">baseurl&#x3D;file:&#x2F;&#x2F;&#x2F;media&#x2F;BaseOS</span><br><span class="line">gpgcheck&#x3D;0</span><br><span class="line">enabled&#x3D;1</span><br><span class="line"></span><br><span class="line">[c8-media-AppStream]</span><br><span class="line">baseurl&#x3D;file:&#x2F;&#x2F;&#x2F;media&#x2F;AppStream</span><br><span class="line">gpgcheck&#x3D;0</span><br><span class="line">enabled&#x3D;1</span><br><span class="line"></span><br><span class="line">5.查看yum可控制的软件包</span><br><span class="line">yum list | wc -l  </span><br><span class="line">yum list | grep iptables</span><br><span class="line"></span><br><span class="line">6.yum安装rpm软件包</span><br><span class="line">yum -y install iptables-service</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <h5 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO&#x3D;dhcp | static  # 修改为静态</span><br><span class="line">ONBOOT&#x3D;yes | no   # 开机自启动</span><br><span class="line">IPADDR&#x3D;192.168.1.100  </span><br><span class="line">NETMASK&#x3D;255.255.255.0</span><br><span class="line">GATEWAY&#x3D;192.168.1.1</span><br><span class="line">DNS1&#x3D;114.114.114.114</span><br><span class="line">DNS1&#x3D;8.8.8.8</span><br></pre></td></tr></table></figure>
 
 
