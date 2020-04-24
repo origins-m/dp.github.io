@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        SSH 远程密钥操作 - undefined
         
     </title>
 
@@ -57,7 +57,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/dp.github.io/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -92,6 +92,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -116,57 +120,63 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2016-03-27</div>
-        <div class="post-info">
-            <a href="/dp.github.io/2016/03/27/qctp/">
-                <h3>
-                    汽车之家图片爬取
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/dp.github.io/tags/#爬虫" title="爬虫">爬虫</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        SSH 远程密钥操作
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2016-03-22</div>
-        <div class="post-info">
-            <a href="/dp.github.io/2016/03/22/oo/">
-                <h3>
-                    面向对象
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/dp.github.io/tags/#python" title="python">python</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-24 16:34:58</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#linux" title="linux">linux</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
+    <div class="post-content ">
+        <blockquote>
+<ol>
+<li><p>Windows 生成密钥对。</p>
+<p>ssh-keygen -t rsa</p>
+</li>
+<li><p>进入 .ssh 目录</p>
+<p>cd C:Users/.ssh</p>
+</li>
+<li><p>将公钥拷贝Linux /root/.ssh 下</p>
+<p>spc id_rsa.pub <a href="mailto:root@192.168.2.103">root@192.168.2.103</a>:/root/.ssh</p>
+</li>
+<li><p>在Linux上吧公钥改名</p>
+<p>mv id_rsa.pub authorized_keys</p>
+</li>
+<li><p>客户端无口令操作-命令操作</p>
+<p>ssh <a href="mailto:root@192.168.2.103">root@192.168.2.103</a></p>
+</li>
+<li><p>客户端无口令操作-文件传输</p>
+<p>scp index.py <a href="mailto:root@192.168.2.103">root@192.168.2.103</a>:/root/</p>
+</li>
+</ol>
+</blockquote>
+<hr>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/dp.github.io/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -206,7 +216,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/dp.github.io/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
