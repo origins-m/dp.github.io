@@ -154,9 +154,41 @@
 
 
 <h5 id="Linux-（虚拟机VMware）系统启动流程"><a href="#Linux-（虚拟机VMware）系统启动流程" class="headerlink" title="Linux （虚拟机VMware）系统启动流程"></a>Linux （虚拟机VMware）系统启动流程</h5><p><em>系统启动流程</em></p>
-<p>1.BIOS加电自检<br>2.把MBR加载到内存<br>3.加载grub<br>4.Kernel自身初始化<br>5.启动第一个程序systemd<br>6.检查默认运行级别<br>7.启动相应级别下的所有程序服务<br>8.加载/etc/rc.d/rc.local脚本<br>9.systemd执行multi-user.target下的getty.target及登录服务<br>10.systemd执行graphical需要的服务</p>
+<ol>
+<li>BIOS加电自检</li>
+<li>把MBR加载到内存</li>
+<li>加载grub</li>
+<li>Kernel自身初始化</li>
+<li>启动第一个程序systemd</li>
+<li>检查默认运行级别</li>
+<li>启动相应级别下的所有程序服务 </li>
+<li>加载/etc/rc.d/rc.local脚本</li>
+<li>systemd执行multi-user.target下的getty.target及登录服务</li>
+<li>systemd执行graphical需要的服务</li>
+</ol>
 <p><em>Linux运行级别</em></p>
-<p>0 &lt;==&gt; shutdown.target(关机)<br>1 &lt;==&gt; emergency.target(紧急救援模式)<br>2 &lt;==&gt; rescue.target(救援模式)<br>3 &lt;==&gt; multi-user.target(多用户模式|字符系统模式)<br>4 &lt;==&gt; 无<br>5 &lt;==&gt; graphical.target(桌面系统)<br>6 &lt;==&gt; 无(重启)</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>shutdown.target(关机)</td>
+<td>emergency.target(紧急救援模式)</td>
+<td>rescue.target(救援模式)</td>
+<td>multi-user.target(多用户模式|字符系统模式)</td>
+<td>无</td>
+<td>graphical.target(桌面系统)</td>
+<td>无(重启)</td>
+</tr>
+</tbody></table>
 <p><em>查看默认级别与切换运行级别</em></p>
 <blockquote>
 <p>查看默认运行级别</p>
