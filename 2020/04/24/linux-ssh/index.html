@@ -169,21 +169,20 @@
 <p><code>systemctl status NetworkManager</code></p>
 <p><strong>nmcli网络配置基础命令</strong></p>
 <blockquote>
-<p>查看所有网卡的信息<br>nmcli </p>
-<p>查看网络设备状态<br>nmcli device status</p>
-<p>查看网络详细信息(ip+dns+gateway)<br>nmcli device show ens32</p>
-<p>设置静态ip地址<br>nmcli connection modify ens32 ipv4.addresses ‘192.168.1.100’</p>
-<p>设置DNS<br>nmcli connection modify ens32 ipv4.dns ‘114.114.114.114’</p>
-<p>设置网关<br>nmcli connection modify ens32 ipv4.gateway ‘192.168.1.1’</p>
-<p>设置IP地址为手动指定<br>nmcli connection modify ens32 ipv4.method manual</p>
-<p>设置IP地址为dhcp自动获取<br>nmcli connection modify ens32 ipv4.method auto</p>
-<p>设置开机自动连接<br>nmcli connection modify ens32 connection.autoconnect yes<br>nmcli connection modify ens32 connection.autoconnect no</p>
-<p>nmcli重新加载ifcfg-ens32配置文件<br>nmcli connection reload</p>
-<p>不重启系统让网卡生效的方法:<br>nmcli connection up ens32<br>nmcli device connect ens32<br>nmcli device reapply ens32</p>
-<p>查看dns:<br>cat /etc/resolv.conf<br>#nameserver</p>
-<p>通讯测试:<br>检测是否能正常通讯<br>ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>#可测试ip、dns和网关是否都设置正确</p>
+<p>查看所有网卡的信息<br>    nmcli </p>
+<p>查看网络设备状态<br>    nmcli device status</p>
+<p>查看网络详细信息(ip+dns+gateway)<br>    nmcli device show ens32</p>
+<p>设置静态ip地址<br>    nmcli connection modify ens32 ipv4.addresses ‘192.168.1.100’</p>
+<p>设置DNS<br>    nmcli connection modify ens32 ipv4.dns ‘114.114.114.114’</p>
+<p>设置网关<br>    nmcli connection modify ens32 ipv4.gateway ‘192.168.1.1’</p>
+<p>设置IP地址为手动指定<br>    nmcli connection modify ens32 ipv4.method manual</p>
+<p>设置IP地址为dhcp自动获取<br>    nmcli connection modify ens32 ipv4.method auto</p>
+<p>设置开机自动连接<br>    nmcli connection modify ens32 connection.autoconnect yes<br>    nmcli connection modify ens32 connection.autoconnect no</p>
+<p>nmcli重新加载ifcfg-ens32配置文件<br>    nmcli connection reload</p>
+<p>不重启系统让网卡生效的方法:<br>    nmcli connection up ens32<br>    nmcli device connect ens32<br>    nmcli device reapply ens32</p>
+<p>查看dns:<br>    cat /etc/resolv.conf<br>    #nameserver</p>
+<p>通讯测试:<br>    检测是否能正常通讯<br>    ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>    #可测试ip、dns和网关是否都设置正确</p>
 </blockquote>
-<hr>
 
         
         <br />
