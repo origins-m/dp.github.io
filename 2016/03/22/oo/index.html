@@ -142,8 +142,7 @@
 </span>
     </div>
     <div class="post-content ">
-        <h5 id="封装、继承、多态"><a href="#封装、继承、多态" class="headerlink" title="封装、继承、多态"></a>封装、继承、多态</h5><blockquote>
-<ol>
+        <h5 id="封装、继承、多态"><a href="#封装、继承、多态" class="headerlink" title="封装、继承、多态"></a>封装、继承、多态</h5><ol>
 <li>封装<ol>
 <li>对数据处理时，可以快速定位到需要的方法，修改时更方便。</li>
 <li>全局变量是只能由1份的，多个函数需要多个备份时，需要利用其他变量来进行存储；通过封装会将用来存储数据的这个变量 变成对象中的一个’全局’变量，只要对象不一样那么这个变量就可以再有一份。</li>
@@ -162,22 +161,21 @@
 </ol>
 </li>
 </ol>
-</blockquote>
-<h5 id="多继承以及MRO顺序"><a href="#多继承以及MRO顺序" class="headerlink" title="多继承以及MRO顺序"></a>多继承以及MRO顺序</h5><blockquote>
-<ol>
+<h5 id="多继承以及MRO顺序"><a href="#多继承以及MRO顺序" class="headerlink" title="多继承以及MRO顺序"></a>多继承以及MRO顺序</h5><ol>
 <li><strong>super().<strong><strong>init</strong></strong></strong>相对于类名.<strong><strong>init</strong></strong>,在单继承上用法基本无差。</li>
 <li>但在多继承上有区别，super方法能保证每个父类的方法只会执行一次，而使用类名的方法会导致方法被执行多次。</li>
 <li>多继承时，使用super方法，对父类的传参数，应该是由于python中super的算法导致的原因，必须把参数全部传递，否者报错。</li>
 <li>单继承时，使用super方法，则不能全部传递，只能传父类方法所需的参数，否则报错。</li>
 <li>多继承时，相对于使用类名.<strong><strong>init</strong></strong>方法，要把每个父类全部写一遍，而使用super方法，只需写一句话便执行了全部父类的方法，这也是为何多继承需要全部传参的原因。</li>
 </ol>
+<hr>
 <p>在python中，类变量在内部是作为字典处理的。如果一个变量的名字没有在当前类的字典中发现，将搜索父类直到被引用的变量名找到（如果这个引用的变量名即没有在自己所在的类有没有在父类中找到，会引发一个 AttributeError异常）。</p>
-</blockquote>
+<hr>
 <h5 id="实例方法、静态方法、类方法"><a href="#实例方法、静态方法、类方法" class="headerlink" title="实例方法、静态方法、类方法"></a>实例方法、静态方法、类方法</h5><ol>
 <li><strong>类属性、实例属性</strong></li>
 </ol>
+<p><em>它们定义和使用中都有所区别，而最本质区别是内存中保存的位置不同。</em></p>
 <blockquote>
-<p>它们定义和使用中都有所区别，而最本质区别是内存中保存的位置不同。</p>
 <ul>
 <li>实例属性属于对象</li>
 <li>类属性属于类</li>

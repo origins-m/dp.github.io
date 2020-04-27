@@ -149,18 +149,17 @@
 <li>由于进程间是相互独立的，因此一个进程的崩溃不会影响到其他进程；而线程是包含在进程之内的， 线程的崩溃就会引发进程的崩溃，继而导致同一个进程内的其他线程也崩溃。多线程非全局变量是否要加锁；在多线程开发中，全局变量是多个线程都共享的数据，为了防止数据混乱，通常使用互斥锁。而局部变量等是各自线程的，是非共享的，所以不需要使用互斥锁。</li>
 </ol>
 </blockquote>
-<h5 id="进程："><a href="#进程：" class="headerlink" title="进程："></a>进程：</h5><ol>
-<li><strong>进程定义</strong></li>
-</ol>
-<hr>
-<ul>
+<h5 id="进程："><a href="#进程：" class="headerlink" title="进程："></a>进程：</h5><hr>
+<ol>
+<li><p>进程定义</p>
+<ol>
 <li>进程是资源分配最小单位。</li>
 <li>当一个可执行程序被系统执行（分配内存资源）就变一个进程。</li>
-</ul>
-<hr>
-<ol start="2">
-<li><strong>进程定义拓展</strong></li>
 </ol>
+</li>
+</ol>
+<ol start="2">
+<li><p>进程定义拓展</p>
 <ol>
 <li>程序并不能单独运行，只有将程序装载到内存中，系统为它分配资源才能运行，这种执行的程序就称为进程。</li>
 <li>程序和进程的区别就在于：程序是指令集合，它是进程运行的静态描述文本；进程是程序一次执行活动，属于动态概念。</li>
@@ -168,15 +167,18 @@
 <li>进程的出现让每个用户感觉自己独享CPU，因此，进程就是为了在CPU上实现多道编程而提出的。</li>
 <li>进程之间有自己独立的内存，各进程之间不能相互访问。</li>
 </ol>
-<hr>
+</li>
+</ol>
 <ol start="3">
-<li><p><strong>多道编程概念</strong></p>
+<li><p>多道编程概念</p>
 <ol>
 <li>多道编程：在计算机内存中同时存放几道相互独立的程序，它们共享系统资源，相互穿插运行。</li>
 <li>单道编程：计算机内存中只允许一个程序运行。</li>
 </ol>
 </li>
-<li><p><strong>进程间访问数据的四种方法</strong></p>
+</ol>
+<ol start="4">
+<li><p>进程间访问数据的四种方法</p>
 <p>注：不同进程间内存是不共享的，所以相互之间不能访问数据。</p>
 <ol>
 <li>利用Queues实现父进程到子进程（或子进程间）的数据传递。</li>
@@ -184,25 +186,24 @@
 <li>Managers实现多进程间数据共享。</li>
 </ol>
 </li>
-<li><p><strong>进程池</strong></p>
+<li><p>进程池</p>
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process . Pool</span><br><span class="line"><span class="keyword">import</span> time, os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(i)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'in the process'</span>,os.getpid()) <span class="comment"># 打印子进程pid</span></span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(arg)</span>:</span></span><br><span class="line">    print(<span class="string">'--&gt;exec done:'</span>,arg,os.getpid())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pool = Pool(<span class="number">3</span>)  <span class="comment"># 进程最多允许5个进程放入进程池</span></span><br><span class="line">    print(<span class="string">'主进程pid:'</span>,os.getpid()) <span class="comment"># 打印父进程pid</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="comment"># 用法一，callback作用是指定只有当Foo运行结束后就执行callback调用的函数，父进程调用的				# callback函数。</span></span><br><span class="line">        pool.apply_async(func=foo,args=(i,),callback=call)</span><br><span class="line">        <span class="comment"># 用法二， pool.apply(func=foo,args=(i,))</span></span><br><span class="line">        </span><br><span class="line">	print(<span class="string">'end'</span>)</span><br><span class="line">    pool.close() <span class="comment"># 关闭进程池。</span></span><br><span class="line">    pool.join() <span class="comment"># 进程池中进程执行完毕后在关闭，如果没有程序直接关闭。</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h5 id="线程："><a href="#线程：" class="headerlink" title="线程："></a>线程：</h5><ol>
-<li><strong>线程定义</strong></li>
-</ol>
-<hr>
-<ul>
+<h5 id="线程："><a href="#线程：" class="headerlink" title="线程："></a>线程：</h5><hr>
+<ol>
+<li>线程定义<ol>
 <li>线程是操作系统调度最小单位。</li>
 <li>它包含在进程之中，是进程实际运作单位。</li>
 <li>进程本身是无法自己执行的，要操作CPU，必须创建一个进程，线程是一系列指令的集合。</li>
-</ul>
-<hr>
+</ol>
+</li>
+</ol>
 <ol start="2">
-<li><p><strong>线程定义拓展</strong></p>
+<li><p>线程定义拓展</p>
 <ol>
 <li>线程是操作系统能够进行运算调度最小单位。包含在进程之中，是进程实际运作单位。</li>
 <li>一个线程是一个单一顺序的控制流，一个进程中可以并发多个线程，每个线程并行执行不同任务。</li>
@@ -213,15 +214,13 @@
 </li>
 </ol>
 <ol start="3">
-<li><p><strong>线程锁</strong></p>
-<hr>
+<li><p>线程锁</p>
 <ol>
 <li>当一个线程对某个资源进行CPU计算的操作时加一个线程锁，只有当前线程计算完成 主动释放锁，其它线程才能操作。</li>
 <li>这样防止了还未计算完成，释放GIL锁后其它线程对这个资源操作导致混乱问题。</li>
 </ol>
 </li>
-<li><p><strong>Semaphore（信号量）</strong></p>
-<hr>
+<li><p>Semaphore（信号量）</p>
 <ol>
 <li>互斥锁 同时只允许一个线程更改数据，而 semaphore 是同时允许一定数量的线程更改数据。</li>
 <li>作用就是同一时刻允许运行的线程数量。</li>
