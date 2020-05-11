@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/dp.github.io/img/favicon.ico">
+
+    <title>
+        
+        nginx - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/dp.github.io/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/dp.github.io/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 人生苦短  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/dp.github.io/" />
+        </div>
+        <div class="name">
+            <i>阳光下的猪</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/dp.github.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1nginx基本介绍"><span class="toc-text">1.1nginx基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-nginx高并发原理-多进程-epool实现高并发"><span class="toc-text">1.nginx高并发原理(多进程+epool实现高并发)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-epoll能实现高并发原理"><span class="toc-text">2.epoll能实现高并发原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、nginx和apache比较"><span class="toc-text">3、nginx和apache比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-nginx正向代理-amp-反向代理"><span class="toc-text">1.2 nginx正向代理 &amp; 反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、正向代理"><span class="toc-text">1、正向代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、反向代理"><span class="toc-text">2、反向代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、反向代理使用场景"><span class="toc-text">3、反向代理使用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、负载均衡常用配置梳理"><span class="toc-text">3、负载均衡常用配置梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、轮询（默认）"><span class="toc-text">1、轮询（默认）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、权重-weight"><span class="toc-text">2、权重 weight</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、IP-hash（-IP绑定）"><span class="toc-text">3、IP_hash（ IP绑定）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、fair（第三方插件）"><span class="toc-text">4、fair（第三方插件）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、url-hash（第三方插件）"><span class="toc-text">5、url_hash（第三方插件）</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 人生苦短  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        nginx
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-03-11 18:45:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#nginx" title="nginx">nginx</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="1-1nginx基本介绍"><a href="#1-1nginx基本介绍" class="headerlink" title="1.1nginx基本介绍"></a>1.1nginx基本介绍</h2><h4 id="1-nginx高并发原理-多进程-epool实现高并发"><a href="#1-nginx高并发原理-多进程-epool实现高并发" class="headerlink" title="1.nginx高并发原理(多进程+epool实现高并发)"></a>1.nginx高并发原理(多进程+epool实现高并发)</h4><p>​    1.Nginx 在启动后，会有一个 master 进程和多个相互独立的 worker 进程 </p>
+<p>​    2.每个子进程只有一个线程，采用的 IO多路复用模型epoll，实现高并发 </p>
+<h4 id="2-epoll能实现高并发原理"><a href="#2-epoll能实现高并发原理" class="headerlink" title="2.epoll能实现高并发原理"></a>2.<strong>epoll能实现高并发原理</strong></h4><p>​    1.epoll() 中内核则维护一个链表，epoll_wait 方法可以获取到链表长度，不为0就知道文件描述符准备好了 </p>
+<p>​    2.在内核实现中 epoll 是根据每个 sockfd 上面的与设备驱动程序建立起来的回调函数实现的</p>
+<p>​    3.某个 sockfd 上的事件发生时，与它对应的回调函数就会被调用，来把这个 sockfd 加入链表，其他处于“空闲的”状态的则不会 </p>
+<p>​    4.epoll上面链表中获取文件描述，这里使用内存映射（mmap）技术， 避免了复制大量文件描述符带来的开销 </p>
+<p>​    <strong>内存映射（mmap）</strong>：内存映射文件，是由一个文件到一块内存的映射，将不必再对文件执行<a href="https://baike.baidu.com/item/I%2FO%E6%93%8D%E4%BD%9C/469761" target="_blank" rel="noopener">I/O操作</a> </p>
+<h4 id="3、nginx和apache比较"><a href="#3、nginx和apache比较" class="headerlink" title="3、nginx和apache比较"></a><strong>3、nginx和apache比较</strong></h4><p>​    (1)nginx相对于apache的优点</p>
+<p>​        1.轻量级，同样起web 服务，比apache 占用更少的内存及资源 </p>
+<p>​        2.抗并发，nginx 处理请求是异步非阻塞的，而apache 则是阻塞型的，在高并发下nginx 能保持低资源低消耗高性能 </p>
+<p>​        3.高度模块化的设计，编写模块相对简单，社区活跃，各种高性能模块出品迅速啊 </p>
+<p>​    (1)apache相对于nginx的优点</p>
+<p>​        1.apache 更为成熟，少 bug ，稳定性好 </p>
+<p>​        2.rewrite ，比nginx 的rewrite 强大 </p>
+<p>​        3.模块超多，基本想到的都可以找到 </p>
+<h2 id="1-2-nginx正向代理-amp-反向代理"><a href="#1-2-nginx正向代理-amp-反向代理" class="headerlink" title="1.2 nginx正向代理 &amp; 反向代理"></a>1.2 nginx正向代理 &amp; 反向代理</h2><h4 id="1、正向代理"><a href="#1、正向代理" class="headerlink" title="1、正向代理"></a><strong>1、正向代理</strong></h4><p>​    1.我访问不了某网站，但是我能访问一个代理服务器，这个代理服务器呢,他能访问那个我不能访问的网站 </p>
+<p>​    2.于是我先连上代理服务器,告诉他我需要那个无法访问网站的内容，代理服务器去取回来,然后返回给我。 </p>
+<p>​    3.客户端必须设置正向代理服务器，当然前提是要知道正向代理服务器的IP地址，还有代理程序的端口。 </p>
+<p>​    4.例如之前使用过这类软件例如CCproxy，<a href="http://www.ccproxy.com/" target="_blank" rel="noopener">http://www.ccproxy.com/</a> 需要在浏览器中配置代理的地址 。</p>
+<p>​    <strong>正向代理作用：</strong> </p>
+<p>​            1.访问原来无法访问的资源，如google </p>
+<p>​            2.可以做缓存，加速访问资源 </p>
+<p>​            3.对客户端访问授权，上网进行认证 </p>
+<p>​            4.代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息 </p>
+<h4 id="2、反向代理"><a href="#2、反向代理" class="headerlink" title="2、反向代理"></a>2、反向代理</h4><p>​    1.反向代理对用户透明，客户端无需任何配置即可访问服务。 </p>
+<p>​    2.实际运行方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器。 </p>
+<p>​    3.<em>并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务  器。</em> </p>
+<h4 id="3、反向代理使用场景"><a href="#3、反向代理使用场景" class="headerlink" title="3、反向代理使用场景"></a><strong>3、反向代理使用场景</strong></h4><p>​    1.<strong>保证内网的安全，可以使用反向代理提供WAF功能，阻止web攻击</strong> </p>
+<p>​        <strong>例：</strong>大型网站，通常将反向代理作为公网访问地址，Web服务器是内网 </p>
+<p>​    <img src="https://img2018.cnblogs.com/blog/1080958/201903/1080958-20190304113305595-735565325.png" alt="img"> </p>
+<p>​    2.<strong>负载均衡，通过反向代理服务器来优化网站的负载</strong></p>
+<p>​    <img src="https://img2018.cnblogs.com/blog/1080958/201903/1080958-20190304113446914-2073969730.png" alt="img"> </p>
+<h2 id="3、负载均衡常用配置梳理"><a href="#3、负载均衡常用配置梳理" class="headerlink" title="3、负载均衡常用配置梳理"></a><strong>3、负载均衡常用配置梳理</strong></h2><h4 id="1、轮询（默认）"><a href="#1、轮询（默认）" class="headerlink" title="1、轮询（默认）"></a>1、轮询（默认）</h4><p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">    server 192.168.0.14;</span><br><span class="line">    server 192.168.0.15;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、权重-weight"><a href="#2、权重-weight" class="headerlink" title="2、权重 weight"></a>2、权重 weight</h4><p>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">    server 192.168.0.14 weight&#x3D;3;</span><br><span class="line">    server 192.168.0.15 weight&#x3D;7;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、IP-hash（-IP绑定）"><a href="#3、IP-hash（-IP绑定）" class="headerlink" title="3、IP_hash（ IP绑定）"></a>3、IP_hash（ IP绑定）</h4><p>上述方式存在一个问题就是说，在负载均衡系统中，假如用户在某台服务器上登录了，那么该用户第二次请求的时候，因为我们是负载均衡系统，<br>每次请求都会重新定位到服务器集群中的某一个，那么已经登录某一个服务器的用户再重新定位到另一个服务器，其登录信息将会丢失，这样显然是不妥的。<br>我们可以采用ip_hash指令解决这个问题，如果客户已经访问了某个服务器，当用户再次访问时，会将该请求通过哈希算法，自动定位到该服务器。<br>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server 192.168.0.14:88;</span><br><span class="line">    server 192.168.0.15:80;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、fair（第三方插件）"><a href="#4、fair（第三方插件）" class="headerlink" title="4、fair（第三方插件）"></a>4、fair（第三方插件）</h4><p>按后端服务器的响应时间来分配请求，响应时间短的优先分配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">    server server1;</span><br><span class="line">    server server2;</span><br><span class="line">    fair;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、url-hash（第三方插件）"><a href="#5、url-hash（第三方插件）" class="headerlink" title="5、url_hash（第三方插件）"></a>5、url_hash（第三方插件）</h4><p>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">    server squid1:3128;</span><br><span class="line">    server squid2:3128;</span><br><span class="line">    hash $request_uri;</span><br><span class="line">    hash_method crc32;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/dp.github.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/dp.github.io/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

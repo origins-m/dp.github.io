@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/dp.github.io/img/favicon.ico">
+
+    <title>
+        
+        vue - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/dp.github.io/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/dp.github.io/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 人生苦短  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/dp.github.io/" />
+        </div>
+        <div class="name">
+            <i>阳光下的猪</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/dp.github.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-js简介："><span class="toc-text">vue.js简介：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用指令"><span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件的生命周期（8个钩子函数）"><span class="toc-text">组件的生命周期（8个钩子函数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由"><span class="toc-text">路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件间通信"><span class="toc-text">组件间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-0中子组件向父组件通信分以下两步"><span class="toc-text">1.0中子组件向父组件通信分以下两步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue实现数据绑定原理"><span class="toc-text">vue实现数据绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#懒加载"><span class="toc-text">懒加载</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 人生苦短  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-06-21 12:40:06</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#vue" title="vue">vue</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="vue-js简介："><a href="#vue-js简介：" class="headerlink" title="vue.js简介："></a>vue.js简介：</h3><ol>
+<li><p>vue是基于MVVM模式实现的</p>
+<p>M：model表示模型，机器可读性强的数据</p>
+<p>V：view表示视图，人眼可读性强的数据</p>
+<p>VM：viewmodel表示视图模型，将机器可读性强的数据转化成人眼可读性强的数据转化为机器可读性强的数据（前端的本质）</p>
+</li>
+<li><p>数据由视图流入模型通过事件监听实现，数据由模型流入视图通过数据的绑定实现的，这就是数据的双向绑定（MVVM模式的标识）</p>
+</li>
+<li><p>vue.js与jQuery</p>
+<ol>
+<li>在过去，前端的任务就是为页面绑定一些交互，处理一些数据，浏览器兼容性问题是最重要的问题，所以jQuery的出现就是为了解决这类问题</li>
+<li>随着前端的发展，前端的业务越来越多，如何能够保证代码的安全，可靠，兼容，可延展性，可维护是现在的主要问题</li>
+<li>jQuery没有将前端业务逻辑抽象分离，所有代码写在一起，很难维护，很难扩展，所以一些框架呼之欲出</li>
+<li>将业务分成模型，视图，控制器，提高代码的可维护性等，但是开发很慢，所以MVVM模式的框架就出现了，vue就是其中的代表之一</li>
+</ol>
+</li>
+</ol>
+<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><ul>
+<li>v-if判断</li>
+<li>v-for循环</li>
+<li>v-model数据双向绑定</li>
+<li>v-bind样式属性绑定</li>
+</ul>
+<h3 id="组件的生命周期（8个钩子函数）"><a href="#组件的生命周期（8个钩子函数）" class="headerlink" title="组件的生命周期（8个钩子函数）"></a>组件的生命周期（8个钩子函数）</h3><ol>
+<li><p>vue将组件看成是一个有生命的个体，跟人一样，定义了各个阶段</p>
+</li>
+<li><p>组件的生命周期：组件的创建过程</p>
+</li>
+<li><p>组件生命周期钩子函数：当组件处在某个阶段，要执行某个方法，来通知我们，组件进入某个阶段，这个方法就是组件生命周期的钩子函数</p>
+</li>
+<li><p>组件的创建过程：这些方法在组件中直接定义，会按照顺序执行，没有参数，作用域都是组件实例化对象</p>
+<p>创建：创建前、创建后</p>
+<p>挂载：挂载前、挂载后</p>
+<p>更新：更新前、更新后</p>
+<p>销毁：销毁前、销毁后</p>
+</li>
+</ol>
+<p>最常用的两个：</p>
+<ol>
+<li>created：实例已经创建完成，并且已经进行数据观测和事件配置</li>
+<li>mouted：模板编译之后，已经挂载，此时才会渲染页面，才能看到页面上数据的展示</li>
+</ol>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>路由传参：</p>
+<p>​        /page/:pageNum</p>
+<p>​        匹配：/page/10,/page/100,/page/hello</p>
+<p>获取传参：</p>
+<ol>
+<li>通过params属性，即可获取动态路由参数  $route.params.id（在控制台可以这样获取：app.$route）</li>
+<li>通过query属性，获取query参数  $route.query.word （在控制台可以这样获取：app.$route.query）</li>
+</ol>
+<p>嵌套路由</p>
+<ol>
+<li><p>路由可以嵌套定义。也就是说路由中可以定义其子路由</p>
+</li>
+<li><p>分成2步：</p>
+<p>第一步：在路由的模板中，定义router-view元素，定义渲染的容器</p>
+<p>第二部：在路由对象中添加children属性，属性值是数据</p>
+</li>
+<li><p>嵌套路由举例</p>
+<ol>
+<li>如果路径后加上  #/home仅显示home页面组件</li>
+<li>如果路径加上 #/home/search会同时显示home组件和子组件search组件中内容</li>
+<li>由于page子路由中写的是绝对路径’/page’所以访问路径变成#/page而不用加上父路径home，显示home组件和page组件</li>
+</ol>
+</li>
+</ol>
+<h3 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h3><ol>
+<li><p>组件间的通信说明</p>
+<ol>
+<li><p>组件间通信就是指组件之间是如何传递数据的</p>
+<p>父组件：vue实例化对象</p>
+<p>子组件：自定义组件</p>
+</li>
+<li><p>组件的template属性，除了可以是字符串，还可以是元素的id</p>
+</li>
+<li><p>我们在页面中定义模板的时候，除了可以定义在script模板标签中，还可以定义在template模板中</p>
+<p>父组件子组件：如果你在一个组件A里面，用到了另外一个组件B，那么B就是A的子组件，A就是B的父组件</p>
+</li>
+</ol>
+</li>
+<li><p>父组件向子组件通信：分为以下两步</p>
+<ol>
+<li><p>第一步：</p>
+<ol>
+<li><p>在组件容器元素上，定义自定义属性，属性值可以传递父组件中的数据</p>
+</li>
+<li><p>如果属性使用了v-bind指令，属性值就是js环境</p>
+</li>
+<li><p>如果属性没有使用v-bind指令，属性值就是字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ickt demo&#x3D;&quot;hello&quot; v-bind:parent-msg&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;ickt&gt;</span><br></pre></td></tr></table></figure>
+
+<p> #hello 是字符串， msg是变量</p>
+</li>
+</ol>
+</li>
+<li><p>第二步</p>
+<ol>
+<li>在组建中定义props属性，属性值是数组，没一个成员代表组件容器元素上的一个属性</li>
+<li>作用：将属性作为变量，注册在子组件中，可以在子组件中使用（包括模板）</li>
+<li>注意：如果属性名称，出现了-，注册的变量要使用驼峰式命名法</li>
+</ol>
+</li>
+<li><p>例子说明</p>
+<ol>
+<li><p>在当页面中注册了子组件，Ickt，在子组件中是无法使用父组件中定义的数据msg的</p>
+</li>
+<li><p>如果想要在子组件Ickt中使用父组件的msg变量，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ickt v-bind:parent-msg&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;ickt&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在子组件中使用NaN就可以访问父组件的msg变量了</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><h3 id="1-0中子组件向父组件通信分以下两步"><a href="#1-0中子组件向父组件通信分以下两步" class="headerlink" title="1.0中子组件向父组件通信分以下两步"></a>1.0中子组件向父组件通信分以下两步</h3><ol>
+<li><p>第一步：注册时间</p>
+<p>在父组件的events属性中注册消息，参数就是触发是传递的数据，作用域是组件实例化对象</p>
+</li>
+<li><p>第二步：触发时间</p>
+<p>在子组件中，通过$dispatch方法触发消息</p>
+</li>
+</ol>
+</li>
+<li><p>2.0中改变</p>
+<ol>
+<li>将$dispatch，$broadcast移除了，新增了$emit，$on，$off<ul>
+<li>$emit发布消息</li>
+<li>$on注册消息：参数就是$emit传递的数据，作用域就是组件实例化对象</li>
+<li>$off注销信息</li>
+</ul>
+</li>
+<li>没一个组件相当于一个事件对象，只能在自身订阅，触发，以及发布</li>
+<li>注意：工作中，注册事件通常在组件生命周期方法中注册，例如created</li>
+</ol>
+</li>
+</ol>
+<h3 id="vue实现数据绑定原理"><a href="#vue实现数据绑定原理" class="headerlink" title="vue实现数据绑定原理"></a>vue实现数据绑定原理</h3><ol>
+<li>vue使用数据劫持实现数据双向绑定<ol>
+<li>vue.js采用数据劫持结合发布者-订阅者模式的方式，通过object.defineProperty()来劫持各个属性的setter，getter</li>
+<li>在数据变动时发布消息给订阅者，触发相应的监听回调</li>
+</ol>
+</li>
+<li>数据劫持原理<ol>
+<li>实现一个数据监听器observer，能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者</li>
+<li>实现一个指令解析器compile，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数</li>
+<li>实现一个watcher，作为连接observer和compile的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的响应回调函数，从而更新视图</li>
+<li>MVVM入口函数，整合以上三者</li>
+</ol>
+</li>
+</ol>
+<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p>懒加载—-也称为延迟加载，即在需要的时候才加载（效率低，占用内存小）。所谓懒加载，写的是其get方法</p>
+<p>注意：如果是懒加载的话则一定要注意先判断是否已经有了，如果没有那么再去进行实例化</p>
+<p>使用懒加载的好处：</p>
+<ol>
+<li>不必将创建对象的代码全部写在viewDidLoad方法中，代码的可读性更强</li>
+<li>每个控件的getter方法中分别负责各自的实例化处理，代码彼此之间的独立性强，松耦合</li>
+</ol>
+<p>比如，我们应该都见过这样的场景：一个页面有很多图片，但是首屏只出现几张，这时如果一次性把图片都加载出来会影响性能。这时可以使用懒加载，页面滚动到可视区在加载。优化首屏加载</p>
+<p>实现：img标签的src属性为空，给一个data-xx属，里面存放图片真实地址，当页面滚动至此图片出现在可视区域时，用js取到该图片的data-xx的值赋给src。</p>
+<p>优点：页面加载速度快，减轻服务器压力，节约流量，用户体验好</p>
+<ol>
+<li><p>什么是vuex?</p>
+<ol>
+<li>官方说法：vuex是一个专为vue.js应用程序开发的状态管理模式</li>
+<li>它采用集中式存储管理应用的所有组件的状态，并以响应的规则保证状态以一种可预测的方式发生变化</li>
+<li>个人理解：vuex是用来管理组件之间通信的一个插件</li>
+</ol>
+</li>
+<li><p>vuex作用</p>
+<ol>
+<li><p>我们知道组件之间是独立的，组件之间想要实现通信，我目前知道的就只有props选项，但这也仅限于父组件和子组件之间的通信</p>
+</li>
+<li><p>如果兄弟组件之间想要实现通信呢？当做中大型项目时，面对一大堆组件之间的通信，还有一大堆的逻辑代码，会不会抓狂？</p>
+</li>
+<li><p>那为何不把组件之间共享的数据给拎出来，在一定的规则下管理这些数据呢？这就是vuex的基本思想了</p>
+<p>总结：使用vuex作用就是实现组件间数据共享</p>
+</li>
+</ol>
+</li>
+<li><p>vuex原理</p>
+<ol>
+<li><p>vue团队为了简化组件间的通信，将state抽象成一个单例模式，将其放到全局，让各个组件都能共享使用</p>
+</li>
+<li><p>vuex数据传递是单向的：action–》mutation–》state–》component–》action</p>
+<p>vue  component指的就是我们定义的组件</p>
+<p>action交互中产生的动作</p>
+<p>mutations动作产生的修改数据的行为</p>
+<p>state共享数据</p>
+</li>
+<li><p>vuex设计的时候相对修改的行为做单测（测试），开发了devtools来做测试，只能检测同步的操作。</p>
+</li>
+<li><p>规范定义：只能在mutations中做同步操作，所以增加了action来异步处理数据</p>
+</li>
+<li><p>将mutations中的异步操作转移到actions中了，这样就可以测试同步的操作了。</p>
+</li>
+</ol>
+</li>
+<li><p>vuex使用场景</p>
+<ol>
+<li>如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，vuex将会成为自然而然的选择。</li>
+<li>如果您不打算开发大型单页应用，使用vuex可能是繁琐冗余的。</li>
+</ol>
+</li>
+<li><p>vuex流程图</p>
+<ol>
+<li>vue组件（Vue Components）会发出（Dispatch）一些动作（Actions）</li>
+<li>动作会提交（Commit）一个对数据的改变（Mutations）</li>
+<li>提交的改变数据存放在状态（State）中的</li>
+<li>最后State将改变的数据再渲染（Render）到组件（Vue Components），展示被改变后的数据</li>
+</ol>
+</li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/dp.github.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/dp.github.io/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
