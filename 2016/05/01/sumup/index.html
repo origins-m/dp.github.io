@@ -350,7 +350,8 @@
 <p>​    ❸<strong>在继承中新式类和经典类写法区别</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SchoolMember.__init__(self,name,age,sex)                      <span class="comment">#经典类写法</span></span><br><span class="line">super(Teacher,self).__init__(name,age,sex)                    <span class="comment">#新式类写法</span></span><br></pre></td></tr></table></figure>
 
-<p>​    <a href="https://images2017.cnblogs.com/blog/1080958/201711/1080958-20171123111919977-1164656767.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1080958/201711/1080958-20171123111919977-1164656767.png</a></p>
+
+
 <h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>通过字符串找到对应请求( get  post   delete 等…)</p>
 <h3 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h3><ol>
 <li><strong>三元运算格式：</strong>  result=值1 if x&lt;y else 值2    if条件成立result=1,否则result=2</li>
@@ -362,7 +363,6 @@
 
 <h2 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h2><p>无论是sellect、poll、epoll他们三个都是在I/O多路复用中检测多个socket链接，与数据从内核态到数据态没有什么关系</p>
 <p>Windows下只支持select   如果是Linux最好使用epoll</p>
-<p><a href="https://www.cnblogs.com/xiaonq/p/7907871.html#i3" target="_blank" rel="noopener">https://www.cnblogs.com/xiaonq/p/7907871.html#i3</a></p>
 <h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p>select 能监控数量有限，不能告诉用户程序具体哪个连接有数据</p>
 <ol>
 <li><p>select目前几乎在所有的平台上支持，其良好<strong>跨平台</strong>支持也是它的一个优点，</p>
@@ -541,8 +541,7 @@
 <li><p>而这个映射函数叫做哈希函数，存放值的数组叫做哈希表</p>
 </li>
 </ol>
-<h2 id="Python常用模块"><a href="#Python常用模块" class="headerlink" title="Python常用模块"></a>Python常用模块</h2><p><a href="https://www.cnblogs.com/xiaonq/p/7866925.html#i11" target="_blank" rel="noopener">https://www.cnblogs.com/xiaonq/p/7866925.html#i11</a></p>
-<h4 id="subprocess"><a href="#subprocess" class="headerlink" title="subprocess"></a>subprocess</h4><h6 id="subprocess原理"><a href="#subprocess原理" class="headerlink" title="subprocess原理"></a><strong>subprocess原理</strong></h6><ol>
+<h2 id="Python常用模块"><a href="#Python常用模块" class="headerlink" title="Python常用模块"></a>Python常用模块</h2><h4 id="subprocess"><a href="#subprocess" class="headerlink" title="subprocess"></a>subprocess</h4><h6 id="subprocess原理"><a href="#subprocess原理" class="headerlink" title="subprocess原理"></a><strong>subprocess原理</strong></h6><ol>
 <li>运行python的时候，我们都是在创建并运行一个进程。像Linux进程那样，一个进程可以fork一个子进程，并让这个子进程exec另外一个程序</li>
 <li>在Python中，我们通过标准库中的subprocess包来fork一个子进程，并运行一个外部的程序。</li>
 <li>subprocess包中定义有数个创建子进程的函数，这些函数分别以不同的方式创建子进程，所以我们可以根据需要来从中选取一个使用</li>
@@ -619,7 +618,9 @@
 </tr>
 </tbody></table>
 <h6 id="time-模块时间转换"><a href="#time-模块时间转换" class="headerlink" title="time()模块时间转换"></a><strong>time()模块时间转换</strong></h6><ol>
-<li>时间戳               1970年1月1日之后的秒，     即：time.time()<br>格式化的字符串    2014-11-11 11:11，           即：time.strftime(‘%Y-%m-%d’)<pre><code>  　　　　3. 结构化时间          元组包含了：年、日、星期等... time.struct_time    即：time.localtime()</code></pre></li>
+<li>时间戳               1970年1月1日之后的秒，     即：time.time()</li>
+<li>格式化的字符串    2014-11-11 11:11，           即：time.strftime(‘%Y-%m-%d’)</li>
+<li>结构化时间          元组包含了：年、日、星期等… time.struct_time    即：time.localtime()</li>
 </ol>
 <h4 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment">#1、datetime.datetime获取当前时间</span></span><br><span class="line">print(datetime.datetime.now())</span><br><span class="line"><span class="comment">#2、获取三天后的时间</span></span><br><span class="line">print(datetime.datetime.now()+datetime.timedelta(+<span class="number">3</span>))</span><br><span class="line"><span class="comment">#3、获取三天前的时间</span></span><br><span class="line">print(datetime.datetime.now()+datetime.timedelta(<span class="number">-3</span>))</span><br><span class="line"><span class="comment">#4、获取三个小时后的时间</span></span><br><span class="line">print(datetime.datetime.now()+datetime.timedelta(hours=<span class="number">3</span>))</span><br><span class="line"><span class="comment">#5、获取三分钟以前的时间</span></span><br><span class="line">print(datetime.datetime.now()+datetime.timedelta(minutes = <span class="number">-3</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">print(datetime.datetime.now())                                   <span class="comment">#2017-08-18 11:25:52.618873</span></span><br><span class="line">print(datetime.datetime.now().date())                            <span class="comment">#2017-08-18</span></span><br><span class="line">print(datetime.datetime.now().strftime(<span class="string">"%Y-%m-%d %H-%M-%S"</span>))    <span class="comment">#2017-08-18 11-25-52</span></span><br><span class="line"></span><br><span class="line">时间戳转换成datetime对象</span><br><span class="line"><span class="comment"># datetime.datetime.fromtimestamp(1520561646.8906238)</span></span><br><span class="line">datetime.datetime(<span class="number">2018</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">6</span>, <span class="number">890624</span>)</span><br></pre></td></tr></table></figure>
 

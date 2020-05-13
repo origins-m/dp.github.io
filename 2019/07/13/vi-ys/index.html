@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/dp.github.io/img/favicon.ico">
+
+    <title>
+        
+        Linux vi编辑与压缩 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/dp.github.io/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/dp.github.io/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 人生苦短  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/dp.github.io/" />
+        </div>
+        <div class="name">
+            <i>阳光下的猪</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/dp.github.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#vi编辑器的概述"><span class="toc-text">vi编辑器的概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#vi编辑器的模式"><span class="toc-text">vi编辑器的模式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#vi编辑器-输入模式"><span class="toc-text">vi编辑器-输入模式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#vi编辑器-命令模式"><span class="toc-text">vi编辑器-命令模式</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Gz、Bz2和Zip压缩包操作"><span class="toc-text">Gz、Bz2和Zip压缩包操作</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 人生苦短  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Linux vi编辑与压缩
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-07-13 11:52:43</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#linux" title="linux">linux</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="vi编辑器的概述"><a href="#vi编辑器的概述" class="headerlink" title="vi编辑器的概述"></a>vi编辑器的概述</h5><ol>
+<li>Vi是Unix及Linux系统下标准的编辑器，由美国加州大学伯克利分校开发。学会它后，您将在Linux的世界里畅行无阻。基本上vi可以分为三种状态，分别是命令模式、插入模式，和底行模式。</li>
+</ol>
+<h5 id="vi编辑器的模式"><a href="#vi编辑器的模式" class="headerlink" title="vi编辑器的模式"></a>vi编辑器的模式</h5><ol>
+<li>命令模式 command</li>
+<li>输入模式 insert</li>
+<li>末行模式 :末行命令</li>
+<li>视图模式 visual</li>
+</ol>
+<h6 id="vi编辑器-输入模式"><a href="#vi编辑器-输入模式" class="headerlink" title="vi编辑器-输入模式"></a>vi编辑器-输入模式</h6><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>在当前字符的后面输入</td>
+</tr>
+<tr>
+<td>s</td>
+<td>删除当前字符并输入</td>
+</tr>
+<tr>
+<td>i</td>
+<td>在当前字符的前面输入</td>
+</tr>
+<tr>
+<td>o</td>
+<td>当前字符所在行下方输入</td>
+</tr>
+<tr>
+<td>A</td>
+<td>当前行后面输入</td>
+</tr>
+<tr>
+<td>S</td>
+<td>删除当前行并输入</td>
+</tr>
+<tr>
+<td>I</td>
+<td>当前行前面输入</td>
+</tr>
+<tr>
+<td>O</td>
+<td>当前字符所在行上一行输入</td>
+</tr>
+</tbody></table>
+<h6 id="vi编辑器-命令模式"><a href="#vi编辑器-命令模式" class="headerlink" title="vi编辑器-命令模式"></a>vi编辑器-命令模式</h6><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H</td>
+<td>控制方向—左</td>
+</tr>
+<tr>
+<td>J</td>
+<td>控制方向—下</td>
+</tr>
+<tr>
+<td>K</td>
+<td>控制方向—上</td>
+</tr>
+<tr>
+<td>L</td>
+<td>控制方向—右</td>
+</tr>
+<tr>
+<td>x</td>
+<td>删除当前字符,3x删除三个字符</td>
+</tr>
+<tr>
+<td>d^  /  .d$</td>
+<td>当前字符删除到^行首&amp;行尾</td>
+</tr>
+<tr>
+<td>dd / dw</td>
+<td>删除一行  /  删除一个单词</td>
+</tr>
+<tr>
+<td>G  / nG  /dG  /  d1G</td>
+<td>最后一行  / 第 n 行  / 从当前行删除到最后一行  /  从当前行删除到第一行</td>
+</tr>
+<tr>
+<td>yy  / nyy</td>
+<td>复制当前行  /  复制n行</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p  /  np  /  P</td>
+<td>粘贴到下一行  /  重复粘贴np次  / 粘贴上一行</td>
+</tr>
+<tr>
+<td>u</td>
+<td>撤销</td>
+</tr>
+<tr>
+<td>ctrl+r</td>
+<td>恢复</td>
+</tr>
+<tr>
+<td>/word</td>
+<td>查找word单词，查找多个n键</td>
+</tr>
+<tr>
+<td>q  /  q!</td>
+<td>不保存退出  /  强制不保存退出</td>
+</tr>
+<tr>
+<td>x  / wq</td>
+<td>保存退出,与 wq一致</td>
+</tr>
+<tr>
+<td>w</td>
+<td>保存不退出</td>
+</tr>
+<tr>
+<td>%s/hello/word/g</td>
+<td>把一篇文章中的所有hello全部替换成world,%第一行到最后的意思</td>
+</tr>
+<tr>
+<td>1,10s/hello/word/g</td>
+<td>把第1行到第10行的hello替换成world</td>
+</tr>
+</tbody></table>
+<h5 id="Gz、Bz2和Zip压缩包操作"><a href="#Gz、Bz2和Zip压缩包操作" class="headerlink" title="Gz、Bz2和Zip压缩包操作"></a>Gz、Bz2和Zip压缩包操作</h5><p><strong>Gz压缩包管理</strong></p>
+<blockquote>
+<ol>
+<li>制作gz压缩包:        |           tar czf mydir1.tar.gz mydir1</li>
+<li>gz压缩包解压:        |           tar xzf mydir1.tar.gz</li>
+<li>查看gz压缩包:        |           tar tf mydir1.tar.gz</li>
+</ol>
+</blockquote>
+<p><strong>Bz2压缩包管理</strong></p>
+<blockquote>
+<ol>
+<li><p>制作bz2压缩包:      |           tar cjf mydir1.tar.bz2 mydir1</p>
+</li>
+<li><p>bz2压缩包解压:      |           tar xjf mydir1.tar.bz2</p>
+</li>
+<li><p>查看bz2压缩包:      |           tar tf mydir1.tar.bz2</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>Zip压缩包管理</strong></p>
+<blockquote>
+<ol>
+<li><p>制作zip压缩包:        |            zip -r mydir1.zip mydir1</p>
+</li>
+<li><p>zip压缩包解压:        |            unzip mydir1.zip</p>
+</li>
+<li><p>查看zip压缩包:        |            unzip -l mydir1.zip</p>
+</li>
+</ol>
+</blockquote>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/dp.github.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/dp.github.io/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
