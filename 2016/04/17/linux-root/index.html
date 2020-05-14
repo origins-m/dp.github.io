@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Root-用户破解流程"><span class="toc-text">Root 用户破解流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Selinux、Firewalld和Iptables基础设置"><span class="toc-text">Selinux、Firewalld和Iptables基础设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#网络管理"><span class="toc-text">网络管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-系统目录结构"><span class="toc-text">Linux 系统目录结构</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Root-用户破解流程"><span class="toc-text">Root 用户破解流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Selinux、Firewalld和Iptables基础设置"><span class="toc-text">Selinux、Firewalld和Iptables基础设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#网络管理"><span class="toc-text">网络管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-系统目录结构"><span class="toc-text">Linux 系统目录结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#系统命令"><span class="toc-text">系统命令</span></a></li></ol>
 </div>
     
 </div>
@@ -158,8 +158,7 @@
 <h5 id="Selinux、Firewalld和Iptables基础设置"><a href="#Selinux、Firewalld和Iptables基础设置" class="headerlink" title="Selinux、Firewalld和Iptables基础设置"></a>Selinux、Firewalld和Iptables基础设置</h5><blockquote>
 <p><strong>Selinux防火墙:</strong></p>
 <ol>
-<li>查看  sestatus </li>
-<li>关闭  vi /etc/selinux/config       修改 SELINUX=disabled</li>
+<li>查看  sestatus<br> . 关闭  vi /etc/selinux/config       修改 SELINUX=disabled</li>
 <li>重启  init 6</li>
 </ol>
 <p><strong>firewalld防火墙:</strong></p>
@@ -182,37 +181,27 @@
 </ol>
 <p>如果<code>iptables</code>防火墙不能通过<code>save</code>保存规则，解决如下：</p>
 </blockquote>
-<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">yum软件包安装[centOS8]:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 挂载光盘</span><br><span class="line">mount /dev/cdrom /media</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>查看挂载</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>配置yum</span><br><span class="line"><span class="keyword">cd</span> /etc/yum.repos.d/</span><br><span class="line">mv CentOS-Media.repo /mnt</span><br><span class="line">rm -rf *</span><br><span class="line">mv /mnt/CentOS-Media.repo ./</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>vi CentOS-Media.repo 修改文件</span><br><span class="line">[c8-media-BaseOS]</span><br><span class="line">baseurl=<span class="keyword">file</span>:///media/BaseOS</span><br><span class="line">gpgcheck=<span class="number">0</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">[c8-media-AppStream]</span><br><span class="line">baseurl=<span class="keyword">file</span>:///media/AppStream</span><br><span class="line">gpgcheck=<span class="number">0</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>查看yum可控制的软件包</span><br><span class="line">yum <span class="keyword">list</span> | wc -l  </span><br><span class="line">yum <span class="keyword">list</span> | grep iptables</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span>yum安装rpm软件包</span><br><span class="line">yum -y install iptables-service</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">yum软件包安装[centOS8]:</span><br><span class="line"></span><br><span class="line">1. 挂载光盘</span><br><span class="line">mount /dev/cdrom /media</span><br><span class="line"></span><br><span class="line">2.查看挂载</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">3.配置yum</span><br><span class="line">cd /etc/yum.repos.d/</span><br><span class="line">mv CentOS-Media.repo /mnt</span><br><span class="line">rm -rf *</span><br><span class="line">mv /mnt/CentOS-Media.repo ./</span><br><span class="line"></span><br><span class="line">4.vi CentOS-Media.repo 修改文件</span><br><span class="line">[c8-media-BaseOS]</span><br><span class="line">baseurl=file:///media/BaseOS</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">[c8-media-AppStream]</span><br><span class="line">baseurl=file:///media/AppStream</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">5.查看yum可控制的软件包</span><br><span class="line">yum list | wc -l  </span><br><span class="line">yum list | grep iptables</span><br><span class="line"></span><br><span class="line">6.yum安装rpm软件包</span><br><span class="line">yum -y install iptables-service</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<h5 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO&#x3D;dhcp | static  # 修改为静态</span><br><span class="line">ONBOOT&#x3D;yes | no   # 开机自启动</span><br><span class="line">IPADDR&#x3D;192.168.1.100  </span><br><span class="line">NETMASK&#x3D;255.255.255.0</span><br><span class="line">GATEWAY&#x3D;192.168.1.1</span><br><span class="line">DNS1&#x3D;114.114.114.114</span><br><span class="line">DNS1&#x3D;8.8.8.8</span><br></pre></td></tr></table></figure>
+<h5 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=dhcp | static  # 修改为静态</span><br><span class="line">ONBOOT=yes | no   # 开机自启动</span><br><span class="line">IPADDR=192.168.1.100  </span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.1.1</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line">DNS1=8.8.8.8</span><br></pre></td></tr></table></figure>
 
 
 
 <h5 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h5><blockquote>
-<p> / ：根目录， 包含所有文件目录，相当于中央系统</p>
-<p>/bin ：普通用户可以使用命令的存放目录</p>
-<p>/sbin ：超级用户可以使用命令的存放目录</p>
-<p>/boot ：引导 程序、内核等存放的目录</p>
-<p>/dev ： 设备文件存储目录</p>
-<p>/etc ：全局配置文件存放目录</p>
-<p>/home ：家目录，普通用户存放文件</p>
-<p>/lib ：根目录下所有程序的共享目录（32位）</p>
-<p>/lib64：根目录下所有程序的共享目录（64位）</p>
-<p>/lost+found：恢复文件存放的位置</p>
-<p>/media：挂载媒体设备目录</p>
-<p>/mnt：临时挂载文件目录</p>
-<p>/opt：程序存放目录</p>
-<p>/proc：特殊文件目录</p>
-<p>/root ：超级用户</p>
-<p>/srv ： 服务创建目录</p>
-<p>/sys ： 硬件设备的驱动程序信息</p>
-<p>/var ： 存放内容经常变化目录</p>
-<p>/tmp ： 临时文件目录</p>
+<p> / ：根目录，相当于中央系统      /home ：家目录，普通用户存放文件             /root ：超级用户                            </p>
+<p> /bin ：普通用户可以使用命令的存放目录      /sbin ：超级用户可以使用命令的存放目录</p>
+<p> /boot ：引导 程序、内核等存放的目录           /dev ： 设备文件存储目录      /etc ：全局配置文件存放目录</p>
+<p> /lib ：根目录下所有程序的共享目录（32位）               /lib64：根目录下所有程序的共享目录（64位）</p>
+<p> /media：挂载媒体设备目录                       /mnt：临时挂载文件目录</p>
+<p> /opt：程序存放目录                                /proc：特殊文件目录                  /srv ： 服务创建目录</p>
+<p> /sys ： 硬件设备的驱动程序信息                       /var ： 存放内容经常变化目录            /tmp ： 临时文件目录</p>
 </blockquote>
+<h5 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">查看内存:</span><br><span class="line">free </span><br><span class="line">free -m</span><br><span class="line">free -g</span><br><span class="line"></span><br><span class="line">查看硬盘:</span><br><span class="line">df </span><br><span class="line">df -T</span><br><span class="line">df -h</span><br><span class="line"></span><br><span class="line">查看系统正在登录的用户:</span><br><span class="line">who</span><br><span class="line"></span><br><span class="line">查看系统最后一重要操作:</span><br><span class="line">last</span><br><span class="line"></span><br><span class="line">查看进程实时消耗的cpu和内存:</span><br><span class="line">top</span><br><span class="line"></span><br><span class="line">查看系统1分钟、5分钟和15分钟平均负载:</span><br><span class="line">uptime</span><br><span class="line"></span><br><span class="line">查看服务进程:</span><br><span class="line">ps -ef </span><br><span class="line">pstree</span><br><span class="line"></span><br><span class="line">查看服务端口:</span><br><span class="line">netstat -tunpl </span><br><span class="line"></span><br><span class="line">杀掉进程:</span><br><span class="line">kill -9 pid</span><br><span class="line">pkill pname</span><br></pre></td></tr></table></figure>
+
 
         
         <br />
