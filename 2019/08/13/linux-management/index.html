@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/dp.github.io/img/favicon.ico">
+
+    <title>
+        
+        centOS8管理 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/dp.github.io/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/dp.github.io/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 人生苦短  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/dp.github.io/" />
+        </div>
+        <div class="name">
+            <i>阳光下的猪</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/dp.github.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#光盘管理"><span class="toc-text">光盘管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RPM包管理"><span class="toc-text">RPM包管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#YUM软件包管理"><span class="toc-text">YUM软件包管理</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 人生苦短  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        centOS8管理
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-08-13 13:19:36</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#linux" title="linux">linux</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="光盘管理"><a href="#光盘管理" class="headerlink" title="光盘管理"></a>光盘管理</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>挂载光盘</td>
+<td>mount /dev/cdrom /media</td>
+</tr>
+<tr>
+<td>查看挂载情况</td>
+<td>df   /    df -h     / df -Th</td>
+</tr>
+<tr>
+<td>卸载光盘</td>
+<td>umount /media</td>
+</tr>
+<tr>
+<td>开机挂载</td>
+<td>首先进入：vi /etc/fstab ;   添加 :  /dev/cdrom        /media         iso9660 defaults   0   0</td>
+</tr>
+<tr>
+<td>开机挂在测试</td>
+<td>mount -a</td>
+</tr>
+</tbody></table>
+<h5 id="RPM包管理"><a href="#RPM包管理" class="headerlink" title="RPM包管理"></a>RPM包管理</h5><table>
+<thead>
+<tr>
+<th>RPM是什么：redhat package management英文缩写，只适于于Redhat和Centos系统</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>安装RPM包：  rpm -ivh installing software</td>
+</tr>
+<tr>
+<td>查看RPM包：  rpm -qa software</td>
+</tr>
+<tr>
+<td>查看RPM包安装的文件:     rpm -ql software</td>
+</tr>
+<tr>
+<td>反查文件是否由RPM 安装：  rpm -qf path</td>
+</tr>
+<tr>
+<td>删除RPM安装的程序：  rpm -e software</td>
+</tr>
+</tbody></table>
+<h5 id="YUM软件包管理"><a href="#YUM软件包管理" class="headerlink" title="YUM软件包管理"></a>YUM软件包管理</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">1.检查光盘是否正常挂载</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">2.挂载</span><br><span class="line">mount /dev/cdrom /media</span><br><span class="line"></span><br><span class="line">配置YUM仓库:</span><br><span class="line">1.删除其他repo文件，只留下CentOS-Media.repo</span><br><span class="line">cd /etc/yum.repos.d/</span><br><span class="line">mv CentOS-Media.repo /mnt</span><br><span class="line">rm -rf *</span><br><span class="line">mv /mnt/CentOS-Media.repo ./</span><br><span class="line"></span><br><span class="line">2.设置CentOS-Media.repo文件</span><br><span class="line">vi CentOS-Media.repo</span><br><span class="line">[c8-media-BaseOS]</span><br><span class="line">baseurl=file:///media/BaseOS</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">[c8-media-AppStream]</span><br><span class="line">baseurl=file:///media/AppStream</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">查看YUM可控制的软件包</span><br><span class="line">yum list</span><br><span class="line">yum list | wc -l</span><br><span class="line">yum list | grep httpd</span><br><span class="line"></span><br><span class="line">YUM安装rpm软件包</span><br><span class="line">yum -y install httpd</span><br><span class="line"></span><br><span class="line">用YUM如何去卸载rpm包</span><br><span class="line">yum -y remove httpd</span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/dp.github.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/dp.github.io/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

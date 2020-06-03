@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/dp.github.io/img/favicon.ico">
+
+    <title>
+        
+        Linux 内核 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/dp.github.io/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/dp.github.io/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 人生苦短  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/dp.github.io/" />
+        </div>
+        <div class="name">
+            <i>阳光下的猪</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/dp.github.io/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/dp.github.io/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#linux-内核"><span class="toc-text">linux 内核</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Linux系统内核主要负责这个几个部分："><span class="toc-text">Linux系统内核主要负责这个几个部分：</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 人生苦短  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Linux 内核
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-06-01 21:44:01</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/dp.github.io/tags/#linux" title="linux">linux</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="linux-内核"><a href="#linux-内核" class="headerlink" title="linux 内核"></a>linux 内核</h5><p><code>Linux内核是操作系统中最核心和关键的部分，具有稳定、高性能、容易维护等优点。</code></p>
+<h6 id="Linux系统内核主要负责这个几个部分："><a href="#Linux系统内核主要负责这个几个部分：" class="headerlink" title="Linux系统内核主要负责这个几个部分："></a>Linux系统内核主要负责这个几个部分：</h6><ol>
+<li><p>对进程的管理</p>
+<ol>
+<li><p>Linux 对进程的管理主要就是上下文切换，涉及到进程的启动、暂停、恢复与终止。其实更准确地来说应该是对任务的管理，因为管理不仅仅是进程，还有线程，在Linux上将进程与线程统一称之为任务。</p>
+</li>
+<li><p>早期的Linux上对线程支持不好，二者区别并不是很大，随着CPU的升级以及内核的改进，Linux上的线程也比原先性能改进很多。上下文切换其实就是CPU时间片轮换的过程，内核提供了任务调度器，保障每个任务都能获得其应有的CPU时间片，而内核会在上下文切换的时间间隙中获得CPU。</p>
+</li>
+<li><p>在多核CPU系统中，如果新的进程在另一个CPU上执行，那么内核就不会让出当前CPU使用权，与此同时，内核会采用一些其它方法来提高CPU的使用率。</p>
+</li>
+</ol>
+</li>
+<li><p>对内存的管理</p>
+<ol>
+<li><p>当前CPU基本都已经实现了一种叫做MMU的机制，该机制提供了虚拟内存的内存访问机制。举个例子，如果所分配的内存表面上看即便时连续的。在物理内存上也有可能不是连续的，因为整个过程都是虚拟的，用户无法直接感知。这相当于在物理内存之上抽象出来一个中间的映射层，通过整个中间层来访问实际的内存空间。这与Java虚拟机的感觉是类似的，只不过MMU要比Java虚拟机这种简单一些，可以理解为一个MAP映射一样的东西，称之为内存映射表。</p>
+</li>
+<li><p>通过这里的虚拟内存机制，可以保障内核空间与用户空间隔离，在内核进行上下文切换时，将MMU（内存管理单元）的内存映射表转交给获得CPU使用权的新进程使用，同时也便于内存管理。</p>
+</li>
+</ol>
+</li>
+<li><p>提供系统调用</p>
+<ol>
+<li>系统提供应用程序不能直接实现的API，例如打开文件，读取文件内容创建套接字等等，这些都需要在内核中实现。举个例子，如果创建套接字需要进行通信，则内核需要将接收到的数据拷贝到用户空间中，当前进程才可以使用，这个过程需要内核进行维护。于此同时，内核还需要维护设备驱动，这样用户就可以通过访问文件系统的方式来与设备进行IO通信。</li>
+</ol>
+</li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/dp.github.io/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/dp.github.io/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
